@@ -304,7 +304,7 @@
                 </div>
 
                 <div class="pt-3 flex justify-end space-x-2">
-                    <button type="button" classclose-modal-btn class="close-modal-btn px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50">Cancel</button>
+                    <button type="button" class="close-modal-btn px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50">Cancel</button>
                     <button type="submit" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-sm shadow">Save Item</button>
                 </div>
             </form>
@@ -417,9 +417,10 @@
     <!-- JavaScript Application Logic -->
     <script>
         // --- INITIAL SETUP & DATA STRUCTURE ---
-       const SELLER_CONTACT_PHONE = "470-353-2247"; // Your phone number for SMS & WhatsApp
-	const SELLER_CONTACT_EMAIL = "mlds1977@hotmail.com"; // Your email address
-c	const ADMIN_PIN = "0150"; // Change to your own private PIN;
+        const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1';
+        const SELLER_CONTACT_PHONE = "4703532247"; // Customize or seller phone
+        const SELLER_CONTACT_EMAIL = "mlds1977@hotmail.com";
+        const ADMIN_PIN = "015026";
 
         let isAdmin = false;
         let qrCodeInstance = null;
