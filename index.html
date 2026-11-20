@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Yard Sale</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Printable Flyer */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-flyer-modal, #printable-flyer-modal * {
+                visibility: visible;
+            }
+            #printable-flyer-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        .sold-ribbon {
+            background-color: rgba(220, 38, 38, 0.9);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800 flex flex-col min-h-full">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Branding -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-md">
+                        <i class="fa-solid fa-store text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-slate-900 leading-tight">Virtual Yard Sale</h1>
+                        <p class="text-xs text-slate-500 font-medium">Great items, fantastic prices!</p>
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <!-- QR / Flyer Generator Button -->
+                    <button id="open-flyer-btn" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-medium rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <i class="fa-solid fa-qrcode text-brand-600"></i>
+                        <span class="hidden md:inline">Print Poster / QR</span>
+                    </button>
+
+                    <!-- Admin Mode Toggle Button -->
+                    <button id="toggle-admin-btn" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-semibold rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-300">
+                        <i class="fa-solid fa-lock text-slate-500" id="admin-icon"></i>
+                        <span id="admin-btn-text" class="hidden sm:inline">Admin Login</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Banner (Shows when logged in) -->
+        <div id="admin-banner" class="hidden bg-amber-500 text-slate-950 px-4 py-2 text-xs sm:text-sm font-medium text-center flex justify-between items-center max-w-7xl mx-auto rounded-b-md shadow-inner">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-user-gear"></i>
+                <span><strong>Admin Mode Active:</strong> You can add items, toggle status, edit or delete.</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button id="add-item-btn" class="bg-slate-900 text-white px-3 py-1 rounded text-xs hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-plus mr-1"></i> Add Item
+                </button>
+                <button id="data-mgmt-btn" class="bg-amber-100 text-amber-900 px-3 py-1 rounded text-xs hover:bg-amber-200 transition border border-amber-300">
+                    <i class="fa-solid fa-database mr-1"></i> Data Backup/Restore
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Controls Section: Search & Category Filters -->
+        <div class="mb-6 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
+            
+            <!-- Search Input -->
+            <div class="relative flex-1">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="search-input" placeholder="Search items by title or description..." 
+                       class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm">
+            </div>
+
+            <!-- Status & Category Filter Buttons -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Status Filter -->
+                <div class="inline-flex p-1 bg-slate-200 rounded-xl text-xs font-semibold">
+                    <button class="status-filter-btn px-3 py-1.5 rounded-lg bg-white shadow-sm text-slate-900" data-status="all">All</button>
+                    <button class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="available">Available</button>
+                    <button class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="sold">Sold</button>
+                </div>
+
+                <!-- Category Dropdown -->
+                <select id="category-filter" class="py-2 px-3 rounded-xl border border-slate-300 bg-white shadow-sm text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option value="all">All Categories</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Tools & Outdoors">Tools & Outdoors</option>
+                    <option value="Home & Kitchen">Home & Kitchen</option>
+                    <option value="Sports & Toys">Sports & Toys</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Catalog Items Grid -->
+        <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Dynamic Item Cards Render Here -->
+        </div>
+
+        <!-- Empty State View -->
+        <div id="empty-state" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-slate-200 shadow-sm mt-4">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-box-open text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">No items found</h3>
+            <p class="text-sm text-slate-500 mt-1 max-w-sm mx-auto">Try adjusting your search terms or filters to find what you're looking for.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© <span id="current-year"></span> Virtual Yard Sale. Hosted online for quick browsing!</p>
+            <p class="mt-1">Items are available for local pick-up. Contact seller for details.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Contact / Buyer Interest Modal -->
+    <div id="contact-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative overflow-hidden animate-in fade-in zoom-in duration-200">
+            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 text-lg">Contact Seller</h3>
+                    <p class="text-xs text-slate-500">Express interest or schedule a pick-up</p>
+                </div>
+            </div>
+
+            <!-- Item Details Preview in Modal -->
+            <div id="contact-item-preview" class="bg-slate-50 p-3 rounded-xl mb-4 flex items-center space-x-3 border border-slate-200">
+                <!-- Dynamic Content injected here -->
+            </div>
+
+            <p class="text-xs text-slate-600 mb-4 font-medium">Choose your preferred method to reach out directly:</p>
+
+            <div class="space-y-3">
+                <a id="contact-sms-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-sm shadow transition">
+                    <i class="fa-solid fa-comment-sms"></i>
+                    <span>Send SMS Text Message</span>
+                </a>
+                <a id="contact-whatsapp-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold text-sm shadow transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+                <a id="contact-email-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm shadow transition">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>Send Email</span>
+                </a>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 text-center">
+                <button class="close-modal-btn text-xs text-slate-400 hover:text-slate-600 font-medium">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Admin Login Pin Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 relative">
+            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 text-lg">Admin Authentication</h3>
+                <p class="text-xs text-slate-500 mt-1">Enter PIN to enable seller control features.<br><span class="text-slate-400 italic">(Default PIN is 1234)</span></p>
+            </div>
+            <form id="admin-login-form" class="space-y-4">
+                <div>
+                    <input type="password" id="admin-pin-input" placeholder="Enter PIN" required maxlength="8"
+                           class="w-full text-center tracking-widest text-lg py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow transition text-sm">
+                    Unlock Admin Panel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Add / Edit Item Modal -->
+    <div id="item-form-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative my-8">
+            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="form-modal-title" class="font-bold text-slate-900 text-xl mb-4">Add New Item</h3>
+
+            <form id="item-form" class="space-y-4">
+                <input type="hidden" id="item-id">
+                
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Item Title *</label>
+                    <input type="text" id="item-title" required placeholder="e.g. Vintage Wooden Coffee Table" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Price ($) *</label>
+                        <input type="number" id="item-price" required step="0.01" min="0" placeholder="25.00" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Category</label>
+                        <select id="item-category" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none bg-white">
+                            <option value="Furniture">Furniture</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Tools & Outdoors">Tools & Outdoors</option>
+                            <option value="Home & Kitchen">Home & Kitchen</option>
+                            <option value="Sports & Toys">Sports & Toys</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Image Source</label>
+                    <div class="space-y-2">
+                        <input type="url" id="item-image-url" placeholder="Paste Image URL (https://...)" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        <div class="text-center text-xs text-slate-400 font-medium">- OR Upload File -</div>
+                        <input type="file" id="item-image-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200">
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-1">Leave empty to use a realistic placeholder image automatically.</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
+                    <textarea id="item-description" rows="3" placeholder="Condition, dimensions, or specifics..." class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                </div>
+
+                <div class="flex items-center space-x-2 pt-1">
+                    <input type="checkbox" id="item-sold-check" class="w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500">
+                    <label for="item-sold-check" class="text-sm font-semibold text-slate-800">Mark item as SOLD</label>
+                </div>
+
+                <div class="pt-3 flex justify-end space-x-2">
+                    <button type="button" classclose-modal-btn class="close-modal-btn px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-sm shadow">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Printable Poster & QR Code Utility -->
+    <div id="printable-flyer-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-8 relative my-6 text-slate-900">
+            
+            <!-- Controls (Non-printable) -->
+            <div class="no-print flex justify-between items-center pb-4 mb-6 border-b border-slate-200">
+                <h3 class="font-bold text-slate-800 text-base">Printable Store Poster & QR Code</h3>
+                <div class="flex items-center space-x-2">
+                    <button id="trigger-print-btn" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-bold flex items-center space-x-2 shadow">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Print Flyer</span>
+                    </button>
+                    <button class="close-modal-btn text-slate-400 hover:text-slate-600 text-xl px-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom URL Input Area (No-Print) -->
+            <div class="no-print bg-slate-50 p-3 rounded-xl border border-slate-200 mb-6 text-xs space-y-2">
+                <label class="font-semibold text-slate-700">QR Code Target Web Address:</label>
+                <div class="flex space-x-2">
+                    <input type="text" id="flyer-url-input" class="flex-1 px-3 py-1.5 border border-slate-300 rounded-lg bg-white" placeholder="https://...">
+                    <button id="update-qr-btn" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-900">Update QR</button>
+                </div>
+                <p class="text-[11px] text-slate-500">Default points to current URL. Update if hosting on GitHub Pages/Netlify address.</p>
+            </div>
+
+            <!-- FLYER CONTENT (Optimized for 8.5x11 Print layout) -->
+            <div class="text-center py-4 px-2 border-4 border-slate-900 rounded-3xl space-y-6">
+                <div class="space-y-1">
+                    <span class="inline-block bg-slate-900 text-white font-black text-xs uppercase px-3 py-1 rounded-full tracking-wider">Neighborhood Event</span>
+                    <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight uppercase">VIRTUAL YARD SALE</h1>
+                    <p class="text-slate-600 font-medium text-lg">Scan to Browse Items, Prices & Pick-Up Info!</p>
+                </div>
+
+                <!-- QR CODE CENTERPIECE -->
+                <div class="flex flex-col items-center justify-center my-4">
+                    <div class="bg-white p-4 rounded-2xl border-2 border-slate-200 shadow-md inline-block">
+                        <div id="qrcode-container" class="flex justify-center"></div>
+                    </div>
+                </div>
+
+                <!-- URL Callout -->
+                <div class="bg-slate-100 py-2 px-4 rounded-xl inline-block max-w-md">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Or visit website directly at:</p>
+                    <p id="flyer-url-display" class="font-mono text-sm font-bold text-slate-800 break-all"></p>
+                </div>
+
+                <!-- Bullet Instructions -->
+                <div class="grid grid-cols-3 gap-2 text-center pt-2 max-w-md mx-auto text-xs text-slate-700">
+                    <div class="p-2 bg-slate-50 rounded-lg">
+                        <i class="fa-solid fa-camera text-brand-600 text-base mb-1 block"></i>
+                        <span><strong>1. Scan</strong> QR with phone camera</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg">
+                        <i class="fa-solid fa-images text-brand-600 text-base mb-1 block"></i>
+                        <span><strong>2. View</strong> full item catalog</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg">
+                        <i class="fa-solid fa-comments text-brand-600 text-base mb-1 block"></i>
+                        <span><strong>3. Contact</strong> seller directly</span>
+                    </div>
+                </div>
+
+                <p class="text-[11px] text-slate-400 font-medium pt-2">Updated in real-time as items are sold!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: Data Backup / Restore (JSON) -->
+    <div id="data-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative">
+            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Manage Store Data</h3>
+            <p class="text-xs text-slate-500 mb-4">Transfer your catalog across devices or save backups.</p>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <h4 class="font-semibold text-slate-800 text-xs">Export Data</h4>
+                    <p class="text-[11px] text-slate-500">Download your current catalog as a JSON file.</p>
+                    <button id="export-json-btn" class="w-full py-2 bg-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-900">
+                        <i class="fa-solid fa-download mr-1"></i> Download JSON Backup
+                    </button>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <h4 class="font-semibold text-slate-800 text-xs">Import Data</h4>
+                    <p class="text-[11px] text-slate-500">Upload a previously saved JSON file.</p>
+                    <input type="file" id="import-json-file" accept=".json" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:bg-slate-200 file:text-slate-700 font-medium">
+                </div>
+
+                <div class="pt-2">
+                    <button id="reset-sample-btn" class="w-full py-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 text-xs font-semibold rounded-lg transition">
+                        Reset to Original Sample Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- INITIAL SETUP & DATA STRUCTURE ---
+        const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1';
+        const SELLER_CONTACT_PHONE = "5551234567"; // Customize or seller phone
+        const SELLER_CONTACT_EMAIL = "seller@example.com";
+        const ADMIN_PIN = "1234";
+
+        let isAdmin = false;
+        let qrCodeInstance = null;
+
+        // Realistic Sample Data out of the box
+        const SAMPLE_ITEMS = [
+            {
+                id: "1",
+                title: "Mid-Century Modern Wooden Chair",
+                price: 45.00,
+                category: "Furniture",
+                description: "Solid wood frame with comfy original cushion. Very good condition with minor vintage wear.",
+                image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80",
+                sold: false,
+                createdAt: Date.now() - 1000000
+            },
+            {
+                id: "2",
+                title: "Mountain Bike (26 inch)",
+                price: 120.00,
+                category: "Sports & Toys",
+                description: "21-speed gear shift, front suspension works great. Recently tuned up and ready to ride.",
+                image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80",
+                sold: false,
+                createdAt: Date.now() - 2000000
+            },
+            {
+                id: "3",
+                title: "Cast Iron Skillet (10-inch)",
+                price: 20.00,
+                category: "Home & Kitchen",
+                description: "Fully seasoned and ready to use. Great heavy cooking quality.",
+                image: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80",
+                sold: true, // Example sold item
+                createdAt: Date.now() - 3000000
+            },
+            {
+                id: "4",
+                title: "DeWalt Cordless Drill Kit",
+                price: 65.00,
+                category: "Tools & Outdoors",
+                description: "Includes drill, 20V rechargeable battery, charger, and sturdy hard carrying case.",
+                image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80",
+                sold: false,
+                createdAt: Date.now() - 4000000
+            },
+            {
+                id: "5",
+                title: "Retro Bluetooth Speaker",
+                price: 30.00,
+                category: "Electronics",
+                description: "Vintage style aesthetic with modern sound quality and long battery life.",
+                image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80",
+                sold: false,
+                createdAt: Date.now() - 5000000
+            },
+            {
+                id: "6",
+                title: "Acoustic Guitar with Gig Bag",
+                price: 85.00,
+                category: "Other",
+                description: "Full size beginner/intermediate guitar. Clean tone, includes soft padded carrying case.",
+                image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=600&q=80",
+                sold: true,
+                createdAt: Date.now() - 6000000
+            }
+        ];
+
+        // --- STATE MANAGEMENT ---
+        function getStoredItems() {
+            const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (!data) {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(SAMPLE_ITEMS));
+                return SAMPLE_ITEMS;
+            }
+            try {
+                return JSON.parse(data);
+            } catch(e) {
+                return SAMPLE_ITEMS;
+            }
+        }
+
+        function saveItems(items) {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
+            renderCatalog();
+        }
+
+        // --- DOM ELEMENTS ---
+        const catalogGrid = document.getElementById('catalog-grid');
+        const emptyState = document.getElementById('empty-state');
+        const searchInput = document.getElementById('search-input');
+        const categoryFilter = document.getElementById('category-filter');
+        const statusFilterBtns = document.querySelectorAll('.status-filter-btn');
+        
+        const adminBanner = document.getElementById('admin-banner');
+        const adminBtnText = document.getElementById('admin-btn-text');
+        const adminIcon = document.getElementById('admin-icon');
+
+        // --- RENDER FUNCTION ---
+        let currentStatusFilter = 'all';
+
+        function renderCatalog() {
+            const items = getStoredItems();
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedCategory = categoryFilter.value;
+
+            // Filter logic
+            const filtered = items.filter(item => {
+                // Search term
+                const matchesSearch = item.title.toLowerCase().includes(searchTerm) || 
+                                      (item.description && item.description.toLowerCase().includes(searchTerm));
+                
+                // Status
+                const matchesStatus = currentStatusFilter === 'all' || 
+                                     (currentStatusFilter === 'available' && !item.sold) ||
+                                     (currentStatusFilter === 'sold' && item.sold);
+
+                // Category
+                const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+
+                return matchesSearch && matchesStatus && matchesCategory;
+            });
+
+            // Toggle Empty State
+            if (filtered.length === 0) {
+                catalogGrid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            // Render Cards
+            catalogGrid.innerHTML = filtered.map(item => {
+                const formattedPrice = parseFloat(item.price).toFixed(2);
+                
+                return `
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col relative group">
+                    
+                    <!-- Image Area with SOLD Banner Overlay -->
+                    <div class="relative w-full pt-[75%] bg-slate-100 overflow-hidden">
+                        <img src="${item.image || 'https://placehold.co/600x450/e2e8f0/475569?text=Yard+Sale+Item'}" 
+                             alt="${escapeHtml(item.title)}" 
+                             onerror="this.src='https://placehold.co/600x450/e2e8f0/475569?text=Image+Unavailable'"
+                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${item.sold ? 'filter grayscale brightness-75' : ''}">
+                        
+                        <!-- Real Estate Style 'SOLD' Badge Overlay -->
+                        ${item.sold ? `
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="sold-ribbon text-white font-extrabold text-2xl tracking-widest px-8 py-2 transform -rotate-12 uppercase border-2 border-white rounded shadow-2xl">
+                                    SOLD
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- Category Badge -->
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            ${escapeHtml(item.category || 'General')}
+                        </span>
+                    </div>
+
+                    <!-- Item Info Card Content -->
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start gap-2 mb-1">
+                                <h3 class="font-bold text-slate-900 text-base leading-snug line-clamp-1">${escapeHtml(item.title)}</h3>
+                                <span class="font-extrabold text-lg text-slate-900">${item.sold ? `<span class="line-through text-slate-400">$${formattedPrice}</span>` : `$${formattedPrice}`}</span>
+                            </div>
+                            <p class="text-xs text-slate-500 line-clamp-2 mb-3 leading-relaxed">${escapeHtml(item.description || 'No description provided.')}</p>
+                        </div>
+
+                        <!-- Card Action Buttons -->
+                        <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
+                            ${!item.sold ? `
+                                <button onclick="openContactModal('${item.id}')" class="w-full py-2 px-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 shadow-sm transition">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>I'm Interested / Contact</span>
+                                </button>
+                            ` : `
+                                <button disabled class="w-full py-2 px-3 bg-slate-100 text-slate-400 rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 cursor-not-allowed">
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <span>Item Claimed</span>
+                                </button>
+                            `}
+
+                            <!-- Admin Controls overlay on card -->
+                            ${isAdmin ? `
+                                <div class="flex items-center justify-between pt-2 mt-1 border-t border-slate-200 text-xs">
+                                    <button onclick="toggleSoldStatus('${item.id}')" class="px-2 py-1 ${item.sold ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'} rounded font-semibold text-[11px] hover:opacity-80">
+                                        Mark ${item.sold ? 'Available' : 'SOLD'}
+                                    </button>
+                                    <div class="flex space-x-2">
+                                        <button onclick="editItem('${item.id}')" class="text-slate-600 hover:text-slate-900 p-1"><i class="fa-solid fa-pen"></i></button>
+                                        <button onclick="deleteItem('${item.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                </div>
+                `;
+            }).join('');
+        }
+
+        // --- CONTACT MODAL HANDLER ---
+        function openContactModal(itemId) {
+            const items = getStoredItems();
+            const item = items.find(i => i.id === itemId);
+            if (!item) return;
+
+            const previewContainer = document.getElementById('contact-item-preview');
+            previewContainer.innerHTML = `
+                <img src="${item.image || 'https://placehold.co/100'}" class="w-12 h-12 rounded-lg object-cover">
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm">${escapeHtml(item.title)}</h4>
+                    <p class="text-xs font-bold text-brand-600">$${parseFloat(item.price).toFixed(2)}</p>
+                </div>
+            `;
+
+            // Prepare pre-filled message text
+            const message = `Hi! I'm interested in buying your "${item.title}" listed for $${parseFloat(item.price).toFixed(2)} at the Yard Sale. Is it still available?`;
+            const encodedMsg = encodeURIComponent(message);
+
+            // Set dynamic links
+            document.getElementById('contact-sms-btn').href = `sms:${SELLER_CONTACT_PHONE}?body=${encodedMsg}`;
+            document.getElementById('contact-whatsapp-btn').href = `https://wa.me/${SELLER_CONTACT_PHONE}?text=${encodedMsg}`;
+            document.getElementById('contact-email-btn').href = `mailto:${SELLER_CONTACT_EMAIL}?subject=Yard Sale Item: ${encodeURIComponent(item.title)}&body=${encodedMsg}`;
+
+            showModal('contact-modal');
+        }
+
+        // --- ADMIN CONTROLS & ACTIONS ---
+        document.getElementById('toggle-admin-btn').addEventListener('click', () => {
+            if (isAdmin) {
+                // Logout
+                isAdmin = false;
+                adminBanner.classList.add('hidden');
+                adminBtnText.textContent = "Admin Login";
+                adminIcon.className = "fa-solid fa-lock text-slate-500";
+                renderCatalog();
+            } else {
+                // Open PIN modal
+                showModal('admin-login-modal');
+            }
+        });
+
+        document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pin = document.getElementById('admin-pin-input').value;
+            if (pin === ADMIN_PIN) {
+                isAdmin = true;
+                adminBanner.classList.remove('hidden');
+                adminBtnText.textContent = "Exit Admin";
+                adminIcon.className = "fa-solid fa-unlock text-amber-600";
+                hideModal('admin-login-modal');
+                document.getElementById('admin-pin-input').value = '';
+                renderCatalog();
+            } else {
+                alert('Incorrect Admin PIN. (Default is 1234)');
+            }
+        });
+
+        // Toggle Item Sold State Directly
+        window.toggleSoldStatus = function(itemId) {
+            let items = getStoredItems();
+            items = items.map(i => {
+                if (i.id === itemId) {
+                    return { ...i, sold: !i.sold };
+                }
+                return i;
+            });
+            saveItems(items);
+        };
+
+        // Delete Item
+        window.deleteItem = function(itemId) {
+            if (confirm("Are you sure you want to delete this item listing?")) {
+                let items = getStoredItems();
+                items = items.filter(i => i.id !== itemId);
+                saveItems(items);
+            }
+        };
+
+        // Open Add / Edit Form Modal
+        document.getElementById('add-item-btn').addEventListener('click', () => {
+            document.getElementById('item-form').reset();
+            document.getElementById('item-id').value = '';
+            document.getElementById('form-modal-title').textContent = 'Add New Item';
+            showModal('item-form-modal');
+        });
+
+        window.editItem = function(itemId) {
+            const items = getStoredItems();
+            const item = items.find(i => i.id === itemId);
+            if (!item) return;
+
+            document.getElementById('item-id').value = item.id;
+            document.getElementById('item-title').value = item.title;
+            document.getElementById('item-price').value = item.price;
+            document.getElementById('item-category').value = item.category || 'Other';
+            document.getElementById('item-image-url').value = item.image || '';
+            document.getElementById('item-description').value = item.description || '';
+            document.getElementById('item-sold-check').checked = !!item.sold;
+
+            document.getElementById('form-modal-title').textContent = 'Edit Item';
+            showModal('item-form-modal');
+        };
+
+        // Save Item Form Submission (Supports URL or File upload to DataURL)
+        document.getElementById('item-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const id = document.getElementById('item-id').value || Date.now().toString();
+            const title = document.getElementById('item-title').value.trim();
+            const price = parseFloat(document.getElementById('item-price').value);
+            const category = document.getElementById('item-category').value;
+            const description = document.getElementById('item-description').value.trim();
+            const sold = document.getElementById('item-sold-check').checked;
+
+            let imageUrl = document.getElementById('item-image-url').value.trim();
+            const imageFile = document.getElementById('item-image-file').files[0];
+
+            // If a file was uploaded, convert to Base64 data string
+            if (imageFile) {
+                imageUrl = await readFileAsDataURL(imageFile);
+            }
+
+            let items = getStoredItems();
+            const existingIndex = items.findIndex(i => i.id === id);
+
+            const newItem = {
+                id,
+                title,
+                price,
+                category,
+                description,
+                image: imageUrl,
+                sold,
+                createdAt: existingIndex >= 0 ? items[existingIndex].createdAt : Date.now()
+            };
+
+            if (existingIndex >= 0) {
+                items[existingIndex] = newItem;
+            } else {
+                items.unshift(newItem);
+            }
+
+            saveItems(items);
+            hideModal('item-form-modal');
+        });
+
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // --- QR CODE & FLYER UTILITY ---
+        document.getElementById('open-flyer-btn').addEventListener('click', () => {
+            const currentUrl = window.location.href;
+            document.getElementById('flyer-url-input').value = currentUrl;
+            generateFlyerQRCode(currentUrl);
+            showModal('printable-flyer-modal');
+        });
+
+        document.getElementById('update-qr-btn').addEventListener('click', () => {
+            const url = document.getElementById('flyer-url-input').value.trim();
+            if (url) {
+                generateFlyerQRCode(url);
+            }
+        });
+
+        function generateFlyerQRCode(targetUrl) {
+            const container = document.getElementById('qrcode-container');
+            container.innerHTML = ''; // Clear previous QR
+            
+            document.getElementById('flyer-url-display').textContent = targetUrl;
+
+            qrCodeInstance = new QRCode(container, {
+                text: targetUrl,
+                width: 200,
+                height: 200,
+                colorDark : "#0f172a",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+
+        document.getElementById('trigger-print-btn').addEventListener('click', () => {
+            window.print();
+        });
+
+        // --- DATA BACKUP & RESTORE MODAL ---
+        document.getElementById('data-mgmt-btn').addEventListener('click', () => {
+            showModal('data-modal');
+        });
+
+        document.getElementById('export-json-btn').addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(getStoredItems(), null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `yard_sale_items_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        });
+
+        document.getElementById('import-json-file').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const importedItems = JSON.parse(event.target.result);
+                    if (Array.isArray(importedItems)) {
+                        saveItems(importedItems);
+                        alert("Data imported successfully!");
+                        hideModal('data-modal');
+                    } else {
+                        alert("Invalid JSON format.");
+                    }
+                } catch (err) {
+                    alert("Error parsing JSON file.");
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        document.getElementById('reset-sample-btn').addEventListener('click', () => {
+            if (confirm("Reset current catalog back to sample data?")) {
+                saveItems(SAMPLE_ITEMS);
+                hideModal('data-modal');
+            }
+        });
+
+        // --- EVENT LISTENERS FOR FILTERS ---
+        searchInput.addEventListener('input', renderCatalog);
+        categoryFilter.addEventListener('change', renderCatalog);
+
+        statusFilterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                statusFilterBtns.forEach(b => {
+                    b.classList.remove('bg-white', 'shadow-sm', 'text-slate-900');
+                    b.classList.add('text-slate-600');
+                });
+                btn.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
+                btn.classList.remove('text-slate-600');
+                
+                currentStatusFilter = btn.dataset.status;
+                renderCatalog();
+            });
+        });
+
+        // --- MODAL UTILITIES ---
+        function showModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function hideModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        document.querySelectorAll('.close-modal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.fixed').classList.add('hidden');
+            });
+        });
+
+        // Helper to prevent HTML injection
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            renderCatalog();
+        });
+    </script>
+</body>
+</html>
