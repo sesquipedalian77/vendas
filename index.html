@@ -61,7 +61,7 @@
         }
 
         .sold-ribbon {
-            background-color: rgba(220, 38, 38, 0.9);
+            background-color: rgba(220, 38, 38, 0.92);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
     </style>
@@ -86,13 +86,13 @@
                 <!-- Header Actions -->
                 <div class="flex items-center space-x-2 sm:space-x-3">
                     <!-- QR / Flyer Generator Button -->
-                    <button id="open-flyer-btn" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-medium rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                    <button id="open-flyer-btn" type="button" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-medium rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
                         <i class="fa-solid fa-qrcode text-brand-600"></i>
                         <span class="hidden md:inline">Print Poster / QR</span>
                     </button>
 
                     <!-- Admin Mode Toggle Button -->
-                    <button id="toggle-admin-btn" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-semibold rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-300">
+                    <button id="toggle-admin-btn" type="button" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-semibold rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-300">
                         <i class="fa-solid fa-lock text-slate-500" id="admin-icon"></i>
                         <span id="admin-btn-text" class="hidden sm:inline">Admin Login</span>
                     </button>
@@ -101,16 +101,16 @@
         </div>
 
         <!-- Admin Banner (Shows when logged in) -->
-        <div id="admin-banner" class="hidden bg-amber-500 text-slate-950 px-4 py-2 text-xs sm:text-sm font-medium text-center flex justify-between items-center max-w-7xl mx-auto rounded-b-md shadow-inner">
+        <div id="admin-banner" class="hidden bg-amber-500 text-slate-950 px-4 py-2 text-xs sm:text-sm font-medium text-center flex flex-wrap gap-2 justify-between items-center max-w-7xl mx-auto rounded-b-md shadow-inner">
             <div class="flex items-center space-x-2">
                 <i class="fa-solid fa-user-gear"></i>
                 <span><strong>Admin Mode Active:</strong> You can add items, toggle status, edit or delete.</span>
             </div>
             <div class="flex items-center space-x-2">
-                <button id="add-item-btn" class="bg-slate-900 text-white px-3 py-1 rounded text-xs hover:bg-slate-800 transition">
+                <button id="add-item-btn" type="button" class="bg-slate-900 text-white px-3 py-1 rounded text-xs hover:bg-slate-800 transition">
                     <i class="fa-solid fa-plus mr-1"></i> Add Item
                 </button>
-                <button id="data-mgmt-btn" class="bg-amber-100 text-amber-900 px-3 py-1 rounded text-xs hover:bg-amber-200 transition border border-amber-300">
+                <button id="data-mgmt-btn" type="button" class="bg-amber-100 text-amber-900 px-3 py-1 rounded text-xs hover:bg-amber-200 transition border border-amber-300">
                     <i class="fa-solid fa-database mr-1"></i> Data Backup/Restore
                 </button>
             </div>
@@ -136,9 +136,9 @@
             <div class="flex flex-wrap items-center gap-2">
                 <!-- Status Filter -->
                 <div class="inline-flex p-1 bg-slate-200 rounded-xl text-xs font-semibold">
-                    <button class="status-filter-btn px-3 py-1.5 rounded-lg bg-white shadow-sm text-slate-900" data-status="all">All</button>
-                    <button class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="available">Available</button>
-                    <button class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="sold">Sold</button>
+                    <button type="button" class="status-filter-btn px-3 py-1.5 rounded-lg bg-white shadow-sm text-slate-900" data-status="all">All</button>
+                    <button type="button" class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="available">Available</button>
+                    <button type="button" class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="sold">Sold</button>
                 </div>
 
                 <!-- Category Dropdown -->
@@ -173,15 +173,15 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4">
-            <p>© <span id="current-year"></span> Virtual Yard Sale. Hosted online for quick browsing!</p>
+            <p>&copy; <span id="current-year"></span> Virtual Yard Sale. Hosted online for quick browsing!</p>
             <p class="mt-1">Items are available for local pick-up. Contact seller for details.</p>
         </div>
     </footer>
 
     <!-- MODAL 1: Contact / Buyer Interest Modal -->
     <div id="contact-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative overflow-hidden animate-in fade-in zoom-in duration-200">
-            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative overflow-hidden">
+            <button type="button" class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -203,22 +203,22 @@
             <p class="text-xs text-slate-600 mb-4 font-medium">Choose your preferred method to reach out directly:</p>
 
             <div class="space-y-3">
-                <a id="contact-sms-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-sm shadow transition">
+                <a id="contact-sms-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-sm shadow transition">
                     <i class="fa-solid fa-comment-sms"></i>
                     <span>Send SMS Text Message</span>
                 </a>
-                <a id="contact-whatsapp-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold text-sm shadow transition">
+                <a id="contact-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold text-sm shadow transition">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>Chat on WhatsApp</span>
                 </a>
-                <a id="contact-email-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm shadow transition">
+                <a id="contact-email-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm shadow transition">
                     <i class="fa-regular fa-envelope"></i>
                     <span>Send Email</span>
                 </a>
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 text-center">
-                <button class="close-modal-btn text-xs text-slate-400 hover:text-slate-600 font-medium">Cancel</button>
+                <button type="button" class="close-modal-btn text-xs text-slate-400 hover:text-slate-600 font-medium">Cancel</button>
             </div>
         </div>
     </div>
@@ -226,7 +226,7 @@
     <!-- MODAL 2: Admin Login Pin Modal -->
     <div id="admin-login-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 relative">
-            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+            <button type="button" class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="text-center mb-5">
@@ -234,14 +234,15 @@
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <h3 class="font-bold text-slate-900 text-lg">Admin Authentication</h3>
-                <p class="text-xs text-slate-500 mt-1">Enter PIN to enable seller control features.<br><span class="text-slate-400 italic">(Default PIN is 1234)</span></p>
+                <p class="text-xs text-slate-500 mt-1">Enter your secret seller PIN to unlock admin controls.</p>
             </div>
             <form id="admin-login-form" class="space-y-4">
                 <div>
-                    <input type="password" id="admin-pin-input" placeholder="Enter PIN" required maxlength="8"
+                    <input type="password" id="admin-pin-input" placeholder="Enter PIN" required maxlength="16" autocomplete="current-password"
                            class="w-full text-center tracking-widest text-lg py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
-                <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow transition text-sm">
+                <p id="admin-login-status" class="text-xs text-center text-rose-600 font-medium hidden"></p>
+                <button type="submit" id="admin-login-submit-btn" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow transition text-sm">
                     Unlock Admin Panel
                 </button>
             </form>
@@ -251,7 +252,7 @@
     <!-- MODAL 3: Add / Edit Item Modal -->
     <div id="item-form-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative my-8">
-            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+            <button type="button" class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <h3 id="form-modal-title" class="font-bold text-slate-900 text-xl mb-4">Add New Item</h3>
@@ -300,7 +301,7 @@
 
                 <div class="flex items-center space-x-2 pt-1">
                     <input type="checkbox" id="item-sold-check" class="w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500">
-                    <label for="item-sold-check" class="text-sm font-semibold text-slate-800">Mark item as SOLD</label>
+                    <label for="item-sold-check" class="text-sm font-semibold text-slate-800">Mark item as SOLD (keeps photo visible)</label>
                 </div>
 
                 <div class="pt-3 flex justify-end space-x-2">
@@ -319,11 +320,11 @@
             <div class="no-print flex justify-between items-center pb-4 mb-6 border-b border-slate-200">
                 <h3 class="font-bold text-slate-800 text-base">Printable Store Poster & QR Code</h3>
                 <div class="flex items-center space-x-2">
-                    <button id="trigger-print-btn" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-bold flex items-center space-x-2 shadow">
+                    <button id="trigger-print-btn" type="button" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-bold flex items-center space-x-2 shadow">
                         <i class="fa-solid fa-print"></i>
                         <span>Print Flyer</span>
                     </button>
-                    <button class="close-modal-btn text-slate-400 hover:text-slate-600 text-xl px-2">
+                    <button type="button" class="close-modal-btn text-slate-400 hover:text-slate-600 text-xl px-2">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -334,7 +335,7 @@
                 <label class="font-semibold text-slate-700">QR Code Target Web Address:</label>
                 <div class="flex space-x-2">
                     <input type="text" id="flyer-url-input" class="flex-1 px-3 py-1.5 border border-slate-300 rounded-lg bg-white" placeholder="https://...">
-                    <button id="update-qr-btn" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-900">Update QR</button>
+                    <button id="update-qr-btn" type="button" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-900">Update QR</button>
                 </div>
                 <p class="text-[11px] text-slate-500">Default points to current URL. Update if hosting on GitHub Pages/Netlify address.</p>
             </div>
@@ -384,7 +385,7 @@
     <!-- MODAL 5: Data Backup / Restore (JSON) -->
     <div id="data-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative">
-            <button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+            <button type="button" class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="font-bold text-slate-900 text-lg mb-2">Manage Store Data</h3>
@@ -394,7 +395,7 @@
                 <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                     <h4 class="font-semibold text-slate-800 text-xs">Export Data</h4>
                     <p class="text-[11px] text-slate-500">Download your current catalog as a JSON file.</p>
-                    <button id="export-json-btn" class="w-full py-2 bg-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-900">
+                    <button id="export-json-btn" type="button" class="w-full py-2 bg-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-900">
                         <i class="fa-solid fa-download mr-1"></i> Download JSON Backup
                     </button>
                 </div>
@@ -406,7 +407,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <button id="reset-sample-btn" class="w-full py-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 text-xs font-semibold rounded-lg transition">
+                    <button id="reset-sample-btn" type="button" class="w-full py-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 text-xs font-semibold rounded-lg transition">
                         Reset to Original Sample Data
                     </button>
                 </div>
@@ -418,9 +419,23 @@
     <script>
         // --- INITIAL SETUP & DATA STRUCTURE ---
         const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1';
-        const SELLER_CONTACT_PHONE = "4703532247"; // Customize or seller phone
+        const SELLER_CONTACT_PHONE = "4703532247";
         const SELLER_CONTACT_EMAIL = "mlds1977@hotmail.com";
-        const ADMIN_PIN = "015026";
+
+        // Server-side PIN verification via Netlify Function + Environment Variable (ADMIN_PIN)
+        async function checkAdminPin(enteredPin) {
+            try {
+                const res = await fetch("/.netlify/functions/verify-pin", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ pin: enteredPin })
+                });
+                const data = await res.json();
+                return data.ok === true;
+            } catch (err) {
+                return false;
+            }
+        }
 
         let isAdmin = false;
         let qrCodeInstance = null;
@@ -454,7 +469,7 @@
                 category: "Home & Kitchen",
                 description: "Fully seasoned and ready to use. Great heavy cooking quality.",
                 image: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80",
-                sold: true, // Example sold item
+                sold: true,
                 createdAt: Date.now() - 3000000
             },
             {
@@ -498,7 +513,7 @@
             }
             try {
                 return JSON.parse(data);
-            } catch(e) {
+            } catch (e) {
                 return SAMPLE_ITEMS;
             }
         }
@@ -508,16 +523,56 @@
             renderCatalog();
         }
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         // --- DOM ELEMENTS ---
         const catalogGrid = document.getElementById('catalog-grid');
         const emptyState = document.getElementById('empty-state');
         const searchInput = document.getElementById('search-input');
         const categoryFilter = document.getElementById('category-filter');
         const statusFilterBtns = document.querySelectorAll('.status-filter-btn');
-        
+
         const adminBanner = document.getElementById('admin-banner');
         const adminBtnText = document.getElementById('admin-btn-text');
         const adminIcon = document.getElementById('admin-icon');
+        const adminLoginModal = document.getElementById('admin-login-modal');
+        const adminLoginForm = document.getElementById('admin-login-form');
+        const adminPinInput = document.getElementById('admin-pin-input');
+        const adminLoginStatus = document.getElementById('admin-login-status');
+        const adminLoginSubmitBtn = document.getElementById('admin-login-submit-btn');
+
+        const itemFormModal = document.getElementById('item-form-modal');
+        const itemForm = document.getElementById('item-form');
+        const formModalTitle = document.getElementById('form-modal-title');
+        const itemIdInput = document.getElementById('item-id');
+        const itemTitleInput = document.getElementById('item-title');
+        const itemPriceInput = document.getElementById('item-price');
+        const itemCategoryInput = document.getElementById('item-category');
+        const itemImageUrlInput = document.getElementById('item-image-url');
+        const itemImageFileInput = document.getElementById('item-image-file');
+        const itemDescriptionInput = document.getElementById('item-description');
+        const itemSoldCheck = document.getElementById('item-sold-check');
+
+        const contactModal = document.getElementById('contact-modal');
+        const contactItemPreview = document.getElementById('contact-item-preview');
+        const contactSmsBtn = document.getElementById('contact-sms-btn');
+        const contactWhatsappBtn = document.getElementById('contact-whatsapp-btn');
+        const contactEmailBtn = document.getElementById('contact-email-btn');
+
+        const flyerModal = document.getElementById('printable-flyer-modal');
+        const flyerUrlInput = document.getElementById('flyer-url-input');
+        const flyerUrlDisplay = document.getElementById('flyer-url-display');
+        const qrcodeContainer = document.getElementById('qrcode-container');
+
+        const dataModal = document.getElementById('data-modal');
 
         // --- RENDER FUNCTION ---
         let currentStatusFilter = 'all';
@@ -527,24 +582,19 @@
             const searchTerm = searchInput.value.toLowerCase().trim();
             const selectedCategory = categoryFilter.value;
 
-            // Filter logic
             const filtered = items.filter(item => {
-                // Search term
-                const matchesSearch = item.title.toLowerCase().includes(searchTerm) || 
-                                      (item.description && item.description.toLowerCase().includes(searchTerm));
-                
-                // Status
-                const matchesStatus = currentStatusFilter === 'all' || 
-                                     (currentStatusFilter === 'available' && !item.sold) ||
-                                     (currentStatusFilter === 'sold' && item.sold);
+                const matchesSearch = item.title.toLowerCase().includes(searchTerm) ||
+                    (item.description && item.description.toLowerCase().includes(searchTerm));
 
-                // Category
+                const matchesStatus = currentStatusFilter === 'all' ||
+                    (currentStatusFilter === 'available' && !item.sold) ||
+                    (currentStatusFilter === 'sold' && item.sold);
+
                 const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
 
                 return matchesSearch && matchesStatus && matchesCategory;
             });
 
-            // Toggle Empty State
             if (filtered.length === 0) {
                 catalogGrid.innerHTML = '';
                 emptyState.classList.remove('hidden');
@@ -553,227 +603,152 @@
                 emptyState.classList.add('hidden');
             }
 
-            // Render Cards
             catalogGrid.innerHTML = filtered.map(item => {
-                const formattedPrice = parseFloat(item.price).toFixed(2);
-                
+                const formattedPrice = parseFloat(item.price || 0).toFixed(2);
+                const safeTitle = escapeHtml(item.title);
+                const safeCategory = escapeHtml(item.category || 'Other');
+                const safeDesc = escapeHtml(item.description || '');
+                const safeImage = escapeHtml(item.image || 'https://placehold.co/600x450/e2e8f0/475569?text=Yard+Sale+Item');
+
+                const soldOverlay = item.sold ? `
+                    <div class="sold-ribbon absolute top-3 left-3 text-white text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full z-10">
+                        SOLD
+                    </div>
+                    <div class="absolute inset-0 bg-slate-900/25 pointer-events-none"></div>
+                ` : '';
+
+                const adminControls = isAdmin ? `
+                    <div class="mt-3 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                        <button type="button" onclick="toggleSoldStatus('${escapeHtml(item.id)}')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-semibold ${item.sold ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200' : 'bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200'}">
+                            ${item.sold ? 'Mark Available' : 'Mark SOLD'}
+                        </button>
+                        <button type="button" onclick="editItem('${escapeHtml(item.id)}')" class="py-1.5 px-2.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button type="button" onclick="deleteItem('${escapeHtml(item.id)}')" class="py-1.5 px-2.5 rounded-lg text-xs font-semibold bg-rose-50 text-rose-600 hover:bg-rose-100">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                ` : '';
+
+                const buyerButton = item.sold
+                    ? `<button type="button" disabled class="mt-auto w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-400 font-semibold text-xs cursor-not-allowed">Item Sold</button>`
+                    : `<button type="button" onclick="openContactModal('${escapeHtml(item.id)}')" class="mt-auto w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs shadow-sm transition">
+                           <i class="fa-solid fa-message mr-1.5"></i> Contact Seller
+                       </button>`;
+
                 return `
                 <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col relative group">
-                    
-                    <!-- Image Area with SOLD Banner Overlay -->
                     <div class="relative w-full pt-[75%] bg-slate-100 overflow-hidden">
-                        <img src="${item.image || 'https://placehold.co/600x450/e2e8f0/475569?text=Yard+Sale+Item'}" 
-                             alt="${escapeHtml(item.title)}" 
+                        <img src="${safeImage}"
+                             alt="${safeTitle}"
                              onerror="this.src='https://placehold.co/600x450/e2e8f0/475569?text=Image+Unavailable'"
-                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${item.sold ? 'filter grayscale brightness-75' : ''}">
-                        
-                        <!-- Real Estate Style 'SOLD' Badge Overlay -->
-                        ${item.sold ? `
-                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <div class="sold-ribbon text-white font-extrabold text-2xl tracking-widest px-8 py-2 transform -rotate-12 uppercase border-2 border-white rounded shadow-2xl">
-                                    SOLD
-                                </div>
-                            </div>
-                        ` : ''}
-
-                        <!-- Category Badge -->
-                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                            ${escapeHtml(item.category || 'General')}
-                        </span>
+                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        ${soldOverlay}
                     </div>
-
-                    <!-- Item Info Card Content -->
-                    <div class="p-4 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start gap-2 mb-1">
-                                <h3 class="font-bold text-slate-900 text-base leading-snug line-clamp-1">${escapeHtml(item.title)}</h3>
-                                <span class="font-extrabold text-lg text-slate-900">${item.sold ? `<span class="line-through text-slate-400">$${formattedPrice}</span>` : `$${formattedPrice}`}</span>
-                            </div>
-                            <p class="text-xs text-slate-500 line-clamp-2 mb-3 leading-relaxed">${escapeHtml(item.description || 'No description provided.')}</p>
+                    <div class="p-4 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between gap-2 mb-1">
+                            <span class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">${safeCategory}</span>
+                            <span class="text-base font-extrabold text-brand-700">$${formattedPrice}</span>
                         </div>
-
-                        <!-- Card Action Buttons -->
-                        <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
-                            ${!item.sold ? `
-                                <button onclick="openContactModal('${item.id}')" class="w-full py-2 px-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 shadow-sm transition">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <span>I'm Interested / Contact</span>
-                                </button>
-                            ` : `
-                                <button disabled class="w-full py-2 px-3 bg-slate-100 text-slate-400 rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 cursor-not-allowed">
-                                    <i class="fa-solid fa-check-circle"></i>
-                                    <span>Item Claimed</span>
-                                </button>
-                            `}
-
-                            <!-- Admin Controls overlay on card -->
-                            ${isAdmin ? `
-                                <div class="flex items-center justify-between pt-2 mt-1 border-t border-slate-200 text-xs">
-                                    <button onclick="toggleSoldStatus('${item.id}')" class="px-2 py-1 ${item.sold ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'} rounded font-semibold text-[11px] hover:opacity-80">
-                                        Mark ${item.sold ? 'Available' : 'SOLD'}
-                                    </button>
-                                    <div class="flex space-x-2">
-                                        <button onclick="editItem('${item.id}')" class="text-slate-600 hover:text-slate-900 p-1"><i class="fa-solid fa-pen"></i></button>
-                                        <button onclick="deleteItem('${item.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
-                                </div>
-                            ` : ''}
-                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm leading-snug mb-1.5">${safeTitle}</h3>
+                        <p class="text-xs text-slate-500 line-clamp-2 mb-4">${safeDesc}</p>
+                        ${buyerButton}
+                        ${adminControls}
                     </div>
-
                 </div>
                 `;
             }).join('');
         }
 
-        // --- CONTACT MODAL HANDLER ---
-        function openContactModal(itemId) {
-            const items = getStoredItems();
-            const item = items.find(i => i.id === itemId);
-            if (!item) return;
-
-            const previewContainer = document.getElementById('contact-item-preview');
-            previewContainer.innerHTML = `
-                <img src="${item.image || 'https://placehold.co/100'}" class="w-12 h-12 rounded-lg object-cover">
-                <div>
-                    <h4 class="font-bold text-slate-900 text-sm">${escapeHtml(item.title)}</h4>
-                    <p class="text-xs font-bold text-brand-600">$${parseFloat(item.price).toFixed(2)}</p>
-                </div>
-            `;
-
-            // Prepare pre-filled message text
-            const message = `Hi! I'm interested in buying your "${item.title}" listed for $${parseFloat(item.price).toFixed(2)} at the Yard Sale. Is it still available?`;
-            const encodedMsg = encodeURIComponent(message);
-
-            // Set dynamic links
-            document.getElementById('contact-sms-btn').href = `sms:${SELLER_CONTACT_PHONE}?body=${encodedMsg}`;
-            document.getElementById('contact-whatsapp-btn').href = `https://wa.me/${SELLER_CONTACT_PHONE}?text=${encodedMsg}`;
-            document.getElementById('contact-email-btn').href = `mailto:${SELLER_CONTACT_EMAIL}?subject=Yard Sale Item: ${encodeURIComponent(item.title)}&body=${encodedMsg}`;
-
-            showModal('contact-modal');
+        // --- ADMIN AUTHENTICATION ---
+        function setAdminState(loggedIn) {
+            isAdmin = loggedIn;
+            if (isAdmin) {
+                adminBanner.classList.remove('hidden');
+                adminIcon.className = 'fa-solid fa-lock-open text-amber-600';
+                adminBtnText.textContent = 'Admin Logout';
+            } else {
+                adminBanner.classList.add('hidden');
+                adminIcon.className = 'fa-solid fa-lock text-slate-500';
+                adminBtnText.textContent = 'Admin Login';
+            }
+            renderCatalog();
         }
 
-        // --- ADMIN CONTROLS & ACTIONS ---
         document.getElementById('toggle-admin-btn').addEventListener('click', () => {
             if (isAdmin) {
-                // Logout
-                isAdmin = false;
-                adminBanner.classList.add('hidden');
-                adminBtnText.textContent = "Admin Login";
-                adminIcon.className = "fa-solid fa-lock text-slate-500";
-                renderCatalog();
-            } else {
-                // Open PIN modal
-                showModal('admin-login-modal');
+                setAdminState(false);
+                return;
             }
+            adminPinInput.value = '';
+            adminLoginStatus.textContent = '';
+            adminLoginStatus.classList.add('hidden');
+            adminLoginModal.classList.remove('hidden');
+            adminPinInput.focus();
         });
 
-        document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+        adminLoginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const pin = document.getElementById('admin-pin-input').value;
-            if (pin === ADMIN_PIN) {
-                isAdmin = true;
-                adminBanner.classList.remove('hidden');
-                adminBtnText.textContent = "Exit Admin";
-                adminIcon.className = "fa-solid fa-unlock text-amber-600";
-                hideModal('admin-login-modal');
-                document.getElementById('admin-pin-input').value = '';
-                renderCatalog();
+            const enteredPin = adminPinInput.value.trim();
+            if (!enteredPin) return;
+
+            adminLoginSubmitBtn.disabled = true;
+            adminLoginSubmitBtn.textContent = 'Verifying...';
+            adminLoginStatus.classList.add('hidden');
+
+            const isValid = await checkAdminPin(enteredPin);
+
+            adminLoginSubmitBtn.disabled = false;
+            adminLoginSubmitBtn.textContent = 'Unlock Admin Panel';
+
+            if (isValid) {
+                adminLoginModal.classList.add('hidden');
+                setAdminState(true);
             } else {
-                alert('Incorrect Admin PIN. (Default is 1234)');
+                adminLoginStatus.textContent = 'Incorrect PIN or server function unavailable.';
+                adminLoginStatus.classList.remove('hidden');
             }
         });
 
-        // Toggle Item Sold State Directly
-        window.toggleSoldStatus = function(itemId) {
-            let items = getStoredItems();
-            items = items.map(i => {
-                if (i.id === itemId) {
-                    return { ...i, sold: !i.sold };
-                }
-                return i;
-            });
-            saveItems(items);
-        };
-
-        // Delete Item
-        window.deleteItem = function(itemId) {
-            if (confirm("Are you sure you want to delete this item listing?")) {
-                let items = getStoredItems();
-                items = items.filter(i => i.id !== itemId);
-                saveItems(items);
-            }
-        };
-
-        // Open Add / Edit Form Modal
+        // --- ITEM MANAGEMENT ---
         document.getElementById('add-item-btn').addEventListener('click', () => {
-            document.getElementById('item-form').reset();
-            document.getElementById('item-id').value = '';
-            document.getElementById('form-modal-title').textContent = 'Add New Item';
-            showModal('item-form-modal');
+            formModalTitle.textContent = 'Add New Item';
+            itemForm.reset();
+            itemIdInput.value = '';
+            itemFormModal.classList.remove('hidden');
         });
 
-        window.editItem = function(itemId) {
+        function editItem(id) {
             const items = getStoredItems();
-            const item = items.find(i => i.id === itemId);
+            const item = items.find(i => i.id === id);
             if (!item) return;
 
-            document.getElementById('item-id').value = item.id;
-            document.getElementById('item-title').value = item.title;
-            document.getElementById('item-price').value = item.price;
-            document.getElementById('item-category').value = item.category || 'Other';
-            document.getElementById('item-image-url').value = item.image || '';
-            document.getElementById('item-description').value = item.description || '';
-            document.getElementById('item-sold-check').checked = !!item.sold;
+            formModalTitle.textContent = 'Edit Item';
+            itemIdInput.value = item.id;
+            itemTitleInput.value = item.title;
+            itemPriceInput.value = item.price;
+            itemCategoryInput.value = item.category || 'Other';
+            itemImageUrlInput.value = item.image && !item.image.startsWith('data:') ? item.image : '';
+            itemImageFileInput.value = '';
+            itemDescriptionInput.value = item.description || '';
+            itemSoldCheck.checked = Boolean(item.sold);
+            itemFormModal.classList.remove('hidden');
+        }
 
-            document.getElementById('form-modal-title').textContent = 'Edit Item';
-            showModal('item-form-modal');
-        };
+        function toggleSoldStatus(id) {
+            const items = getStoredItems();
+            const updated = items.map(item => item.id === id ? { ...item, sold: !item.sold } : item);
+            saveItems(updated);
+        }
 
-        // Save Item Form Submission (Supports URL or File upload to DataURL)
-        document.getElementById('item-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const id = document.getElementById('item-id').value || Date.now().toString();
-            const title = document.getElementById('item-title').value.trim();
-            const price = parseFloat(document.getElementById('item-price').value);
-            const category = document.getElementById('item-category').value;
-            const description = document.getElementById('item-description').value.trim();
-            const sold = document.getElementById('item-sold-check').checked;
-
-            let imageUrl = document.getElementById('item-image-url').value.trim();
-            const imageFile = document.getElementById('item-image-file').files[0];
-
-            // If a file was uploaded, convert to Base64 data string
-            if (imageFile) {
-                imageUrl = await readFileAsDataURL(imageFile);
-            }
-
-            let items = getStoredItems();
-            const existingIndex = items.findIndex(i => i.id === id);
-
-            const newItem = {
-                id,
-                title,
-                price,
-                category,
-                description,
-                image: imageUrl,
-                sold,
-                createdAt: existingIndex >= 0 ? items[existingIndex].createdAt : Date.now()
-            };
-
-            if (existingIndex >= 0) {
-                items[existingIndex] = newItem;
-            } else {
-                items.unshift(newItem);
-            }
-
+        function deleteItem(id) {
+            if (!confirm('Are you sure you want to remove this item?')) return;
+            const items = getStoredItems().filter(item => item.id !== id);
             saveItems(items);
-            hideModal('item-form-modal');
-        });
+        }
 
-        function readFileAsDataURL(file) {
+        function readFileAsDataUrl(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = () => resolve(reader.result);
@@ -782,111 +757,148 @@
             });
         }
 
-        // --- QR CODE & FLYER UTILITY ---
+        itemForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const items = getStoredItems();
+            const existingId = itemIdInput.value;
+            const existingItem = existingId ? items.find(i => i.id === existingId) : null;
+
+            let imageSrc = itemImageUrlInput.value.trim();
+            if (itemImageFileInput.files && itemImageFileInput.files[0]) {
+                imageSrc = await readFileAsDataUrl(itemImageFileInput.files[0]);
+            } else if (!imageSrc && existingItem) {
+                imageSrc = existingItem.image;
+            }
+
+            const payload = {
+                id: existingId || String(Date.now()),
+                title: itemTitleInput.value.trim(),
+                price: parseFloat(itemPriceInput.value || 0),
+                category: itemCategoryInput.value,
+                description: itemDescriptionInput.value.trim(),
+                image: imageSrc || 'https://placehold.co/600x450/e2e8f0/475569?text=Yard+Sale+Item',
+                sold: itemSoldCheck.checked,
+                createdAt: existingItem ? existingItem.createdAt : Date.now()
+            };
+
+            const nextItems = existingId
+                ? items.map(i => i.id === existingId ? payload : i)
+                : [payload, ...items];
+
+            saveItems(nextItems);
+            itemFormModal.classList.add('hidden');
+        });
+
+        // --- BUYER CONTACT MODAL ---
+        function openContactModal(id) {
+            const items = getStoredItems();
+            const item = items.find(i => i.id === id);
+            if (!item) return;
+
+            const priceStr = parseFloat(item.price || 0).toFixed(2);
+            const message = `Hi! I'm interested in "${item.title}" ($${priceStr}) from your Virtual Yard Sale.`;
+            const encodedMsg = encodeURIComponent(message);
+            const cleanPhone = SELLER_CONTACT_PHONE.replace(/[^0-9]/g, '');
+
+            contactItemPreview.innerHTML = `
+                <img src="${escapeHtml(item.image || 'https://placehold.co/120x90/e2e8f0/475569?text=Item')}" alt="${escapeHtml(item.title)}" class="w-16 h-16 rounded-lg object-cover border border-slate-200">
+                <div>
+                    <p class="font-bold text-slate-900 text-sm">${escapeHtml(item.title)}</p>
+                    <p class="text-xs font-bold text-brand-700">$${priceStr}</p>
+                </div>
+            `;
+
+            contactSmsBtn.href = `sms:${cleanPhone}?body=${encodedMsg}`;
+            contactWhatsappBtn.href = `https://wa.me/${cleanPhone}?text=${encodedMsg}`;
+            contactEmailBtn.href = `mailto:${SELLER_CONTACT_EMAIL}?subject=${encodeURIComponent('Yard Sale Interest: ' + item.title)}&body=${encodedMsg}`;
+
+            contactModal.classList.remove('hidden');
+        }
+
+        // --- PRINTABLE FLYER & QR CODE ---
+        function renderQrCode(targetUrl) {
+            const finalUrl = (targetUrl || window.location.href).trim();
+            flyerUrlDisplay.textContent = finalUrl;
+            qrcodeContainer.innerHTML = '';
+            qrCodeInstance = new QRCode(qrcodeContainer, {
+                text: finalUrl,
+                width: 190,
+                height: 190,
+                colorDark: "#0f172a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
         document.getElementById('open-flyer-btn').addEventListener('click', () => {
             const currentUrl = window.location.href;
-            document.getElementById('flyer-url-input').value = currentUrl;
-            generateFlyerQRCode(currentUrl);
-            showModal('printable-flyer-modal');
+            flyerUrlInput.value = currentUrl;
+            renderQrCode(currentUrl);
+            flyerModal.classList.remove('hidden');
         });
 
         document.getElementById('update-qr-btn').addEventListener('click', () => {
-            const url = document.getElementById('flyer-url-input').value.trim();
-            if (url) {
-                generateFlyerQRCode(url);
-            }
+            renderQrCode(flyerUrlInput.value);
         });
-
-        function generateFlyerQRCode(targetUrl) {
-            const container = document.getElementById('qrcode-container');
-            container.innerHTML = ''; // Clear previous QR
-            
-            document.getElementById('flyer-url-display').textContent = targetUrl;
-
-            qrCodeInstance = new QRCode(container, {
-                text: targetUrl,
-                width: 200,
-                height: 200,
-                colorDark : "#0f172a",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        }
 
         document.getElementById('trigger-print-btn').addEventListener('click', () => {
             window.print();
         });
 
-        // --- DATA BACKUP & RESTORE MODAL ---
+        // --- DATA BACKUP / RESTORE ---
         document.getElementById('data-mgmt-btn').addEventListener('click', () => {
-            showModal('data-modal');
+            dataModal.classList.remove('hidden');
         });
 
         document.getElementById('export-json-btn').addEventListener('click', () => {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(getStoredItems(), null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `yard_sale_items_${new Date().toISOString().slice(0,10)}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
+            const blob = new Blob([JSON.stringify(getStoredItems(), null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `virtual-yard-sale-backup-${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
         });
 
-        document.getElementById('import-json-file').addEventListener('change', (e) => {
-            const file = e.target.files[0];
+        document.getElementById('import-json-file').addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
             if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                try {
-                    const importedItems = JSON.parse(event.target.result);
-                    if (Array.isArray(importedItems)) {
-                        saveItems(importedItems);
-                        alert("Data imported successfully!");
-                        hideModal('data-modal');
-                    } else {
-                        alert("Invalid JSON format.");
-                    }
-                } catch (err) {
-                    alert("Error parsing JSON file.");
-                }
-            };
-            reader.readAsText(file);
+            try {
+                const text = await file.text();
+                const parsed = JSON.parse(text);
+                if (!Array.isArray(parsed)) throw new Error('Invalid format');
+                saveItems(parsed);
+                dataModal.classList.add('hidden');
+                alert('Catalog imported successfully!');
+            } catch (err) {
+                alert('Could not import JSON file. Please check the file format.');
+            }
+            e.target.value = '';
         });
 
         document.getElementById('reset-sample-btn').addEventListener('click', () => {
-            if (confirm("Reset current catalog back to sample data?")) {
-                saveItems(SAMPLE_ITEMS);
-                hideModal('data-modal');
-            }
+            if (!confirm('Reset catalog back to original sample items?')) return;
+            localStorage.removeItem(LOCAL_STORAGE_KEY);
+            renderCatalog();
+            dataModal.classList.add('hidden');
         });
 
-        // --- EVENT LISTENERS FOR FILTERS ---
+        // --- FILTERS & MODAL CLOSE ---
         searchInput.addEventListener('input', renderCatalog);
         categoryFilter.addEventListener('change', renderCatalog);
 
         statusFilterBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', () => {
                 statusFilterBtns.forEach(b => {
                     b.classList.remove('bg-white', 'shadow-sm', 'text-slate-900');
                     b.classList.add('text-slate-600');
                 });
                 btn.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
                 btn.classList.remove('text-slate-600');
-                
                 currentStatusFilter = btn.dataset.status;
                 renderCatalog();
             });
         });
-
-        // --- MODAL UTILITIES ---
-        function showModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-        }
-
-        function hideModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
 
         document.querySelectorAll('.close-modal-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -894,21 +906,15 @@
             });
         });
 
-        // Helper to prevent HTML injection
-        function escapeHtml(str) {
-            return String(str)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        // --- INITIALIZATION ---
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            renderCatalog();
+        document.querySelectorAll('.fixed').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.add('hidden');
+            });
         });
+
+        // --- INIT ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        renderCatalog();
     </script>
 </body>
 </html>
