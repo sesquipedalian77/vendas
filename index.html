@@ -1,3 +1,1886 @@
+
+Gemini
+New chat
+Library
+Images
+Scheduled
+Students
+
+More
+New notebook
+Mother Sales Web App
+Bia Final Bounderies/Space
+Asking for Secret Codes
+Shipping Packages to Brazil Rates and Customs
+Van Delivery Companies
+Life Guide for Felony Reentry
+Cleaning Estimate Calculator Setup
+Stock Investing: Basics, Steps, Do's
+Felony Expungement
+USCIS Forms for Bolivar's Green Card
+Requesting Billing Reconsideration from Wellstar
+Reliable 2026 Pickup Truck Guide
+Housecleaning Estimate PDF
+Gasoline Evaporation Rate and Factors
+Nursing Classes and Costs in Marietta
+Healing and Personal Transformation
+Converting Vertical to Landscape Photos
+Waffle House Cook Pay in Georgia
+Meaning of Excluded Child Status
+North Cobb Magnet Foundation Link
+SSI Eligibility for Depression
+HP Envy 17 Camera Driver Guide
+Dismissal for Petitioner Absence in Court
+Starting a Delivery Business Blueprint
+Isolated Bar Stool Product Shot
+Legal Notice Translation and Breakdown
+Divorce Without You Knowing?
+Searching TPO Court Case Records
+How to Get a Free Divorce
+Detecting Blocks on WhatsApp
+Finding Your Computer via Microsoft
+Conversation with Gemini
+Wed, October 21 at 7:47 PM
+I need to sale few things.  My idea is to add the products (like yard), I have the pictures, I know the prices.  I need to create a QR to people have an easy access to the website, because I will print and place in local stores.  Need to be public, when sold and can manually click that was sold but keeping the image (like you a realtor sales a home). GitHub use and Netlify.
+
+I will now generate the complete, self-contained single-file web application for your Virtual Yard Sale. It includes an interactive catalog with "SOLD" overlays, an admin control panel to manage items (add, edit, toggle sold status, export/import JSON), direct buyer contact actions (SMS/WhatsApp/Email), and a built-in QR Code and printable poster utility tailored for local stores.
+
+Virtual Yard Sale Web App
+Nov 20, 5:26 PM
+Deployment Instructions:
+For GitHub Pages:
+
+Save the code above into a file named index.html.
+
+Push it to a GitHub repository.
+
+Go to Settings > Pages in your repository and set the source branch to main or master.
+
+For Netlify:
+
+Drag and drop the folder containing index.html directly into Netlify Drop.
+
+Local Store Flyers:
+
+Click Print Poster / QR at the top right of the application to preview and print out posters with your live website address and QR code.
+
+Today 4:52 PM
+give step by step instruction because the website is not working.
+
+To get your Virtual Yard Sale website live and working properly on GitHub and Netlify, the most common issue is either the file name/location or how changes are saved for public visitors.
+
+Follow these steps in order to fix your deployment and ensure your "Sold" updates show up for everyone:
+
+1
+Verify your project folder and file name
+Must be named exactly index.html in lowercase
+Create a dedicated folder on your computer (for example, yard-sale). Save the generated code inside that folder as index.html. If your computer saves it as index.html.txt, Netlify and GitHub will not load it as a website—make sure file extensions are visible and remove .txt.
+
+2
+Test the file locally first
+Double-click index.html on your computer to open it in your browser (Chrome, Edge, or Safari). Confirm that the catalog loads, you can open the Admin panel, and you can add an item.
+
+3
+Upload to GitHub properly
+Ensure index.html is in the root directory, not inside a subfolder
+Log in to GitHub, create a new Public repository, and click Add file - Upload files. Drag index.html directly into the upload box (do not drag the whole folder, or GitHub will nest it one level too deep). Click Commit changes.
+
+4
+Connect GitHub to Netlify
+Log in to Netlify, click Add new site - Import an existing project, choose GitHub, and select your repository. Leave the Build command blank, set the Publish directory to empty (or .), and click Deploy site. Your site will go live at a *.netlify.app URL.
+
+5
+Make your Sold updates visible to the public
+Browser storage alone only updates your own device
+Because static sites on GitHub/Netlify do not have a backend database, clicking "Sold" in the Admin panel only saves to your own browser until you update the live file. After adding items or marking an item Sold in the Admin panel, click Export JSON, paste that updated data into the default items array inside index.html (or upload the updated file), and commit the change to GitHub. Netlify will automatically redeploy in ~15 seconds so everyone scanning your QR code sees the "SOLD" banner.
+
+6
+Generate and test your QR code poster
+Open your live *.netlify.app link on your phone using cellular data (off Wi-Fi) to confirm it loads publicly. Once confirmed, click Print Poster / QR on your live site so the QR code encodes your actual public Netlify URL rather than a local file path.
+
+If you are seeing a specific error message on Netlify (such as Page Not Found / 404) or a blank white screen, share what you see on the screen and which step failed so we can pinpoint the exact fix.
+
+direction 3 I can't find add file-upload files
+
+If you just created a brand-new, empty GitHub repository, the "Add file" / "Upload files" button does not appear until the repository has at least one commit (a starting file). You can also bypass GitHub's file uploader completely by dragging your folder straight into Netlify Drop.
+
+Here are the two fastest ways past this:
+
+Option A: Unlock "Upload files" on GitHub first
+1
+Create a starting file on the empty repository page
+On your new empty repository page, look at the quick-setup text and click the link to create a README (or creating a new file). Leave the text blank or type a quick note like yard sale, scroll down, and click Commit changes.
+Verification: The page reloads and displays a file list containing README.md instead of the empty setup commands.
+
+2
+Open the Add file menu
+Near the top right of the file list (above the files, next to the green Code button), click Add file and select Upload files.
+Verification: A drag-and-drop box appears asking you to drop files or choose them from your computer.
+
+3
+Upload and commit index.html
+Drag your index.html file into the box, wait for it to finish uploading, and click Commit changes at the bottom.
+Verification: index.html appears in your main repository file list.
+
+Option B: Skip GitHub uploading for now and deploy straight to Netlify
+If you only need the live site right away, you don't have to upload through GitHub first:
+
+Put index.html inside a folder on your computer.
+
+Open app.netlify.com/drop in your browser and drag that folder onto the page.
+
+Verification: Netlify finishes deploying in seconds and gives you a live [https://...netlify.app](https://...netlify.app) link you can open on your phone.
+
+If you already see README.md or other files in your repository and Add file is still missing or grayed out, check that you are signed into the account that owns the repository (not viewing a read-only page) and try refreshing or opening GitHub in an incognito window.
+
+create me a README FILE
+
+I will now generate a clear, ready-to-use README.md file tailored specifically to your Virtual Yard Sale web application.
+
+Virtual Yard Sale README
+Nov 20, 5:28 PM
+You can paste this directly into your GitHub repository's README.md editor to initialize your repository, then use Add file > Upload files to upload index.html.
+
+CREATE A FILE TO DOWNLOAD
+
+I am regenerating the index.html file cleanly in the right-hand editor panel so you can download it directly without any extra wrapper tags, ready to upload to GitHub or Netlify.
+
+Virtual Yard Sale Web App
+Nov 20, 5:26 PM
+To save it to your computer, click the Download button (or Copy icon) at the top-right corner of the index.html editor pane on the right.
+
+do I need Readme file? if I do give me a link to download
+
+No, you do not need a README.md file for your website to work on GitHub or Netlify—your index.html file is the only file required.
+
+However, if you want a README.md file anyway (for example, to initialize an empty GitHub repository so the "Upload files" button appears), I am generating a clean README.md file in the editor on the right so you can click the Download button at the top-right corner of that pane.
+
+Virtual Yard Sale README
+Virtual Yard Sale
+A mobile-friendly web catalog for running a local yard sale or moving sale online. Visitors can scan a QR code on a printed store flyer to browse items, check prices, see what has already been sold, and contact the seller directly.
+
+Features
+Public Product Catalog: Displays items with photos, prices, categories, descriptions, and search/filter controls.
+
+Realtor-Style "SOLD" Overlays: Marking an item as sold keeps the photo visible with a red SOLD banner and crossed-out price.
+
+One-Tap Buyer Contact: Shoppers can reach out directly via SMS text message, WhatsApp, or Email with pre-filled item details.
+
+Built-In Admin Panel: Unlock seller controls (default PIN: 1234) to add items, upload photos, edit details, toggle sold status, or export/import data backups.
+
+Printable Store Flyer & QR Code: Generates a ready-to-print poster with a scannable QR code linking directly to your live site.
+
+Quick Setup & Customization
+Before publishing, open index.html and update your contact details and default PIN near the top of the <script> section:
+
+const SELLER_CONTACT_PHONE = "5551234567"; // Your phone number for SMS & WhatsApp
+const SELLER_CONTACT_EMAIL = "seller@example.com"; // Your email address
+const ADMIN_PIN = "1234"; // Change to your own private PIN
+
+Deploying to GitHub & Netlify
+Upload to GitHub:
+
+Ensure index.html is in the root folder of your public GitHub repository.
+
+Deploy on Netlify:
+
+Sign in to Netlify, click Add new site > Import an existing project, and connect your GitHub repository.
+
+Leave the Build command blank and click Deploy site.
+
+Updating Live Items for the Public:
+
+Because this is a static website with no external database, changes made in the Admin Panel save to your browser's local storage first.
+
+After adding items or marking items as SOLD, click Data Backup/Restore > Download JSON Backup, update the SAMPLE_ITEMS list inside index.html, and upload the updated index.html to GitHub. Netlify will automatically update the live site within seconds.
+
+Printing Flyers for Local Stores
+Open your live public Netlify URL in a browser.
+
+Click Print Poster / QR in the top navigation bar.
+
+Verify the URL matches your live public site and click Print Flyer.
+
+Edit directly or with Gemini
+ Click anywhere to type and edit directly, or select text to prompt Gemini for changes. 
+You can download README.md directly from the top-right corner of the document editor on the right.
+
+now if someone right click in the website they will the the pin number, I want to hide.
+
+Because index.html runs in the visitor's browser on a static host like GitHub or Netlify, nothing inside the browser code can ever be 100% hidden from a determined person using Inspect, View Page Source, or browser Developer Tools. Even if you block right-clicking, anyone can still press F12 or Ctrl+U (or Cmd+Option+U on Mac) to read the file.
+
+However, you can remove the PIN from the page code altogether (the only true way to keep it secret) and disable right-clicking as a basic deterrent against casual clicks.
+
+1. The Real Fix: Don't Put the PIN in index.html
+Any password or PIN written inside index.html is downloaded by every visitor's browser. Instead of storing the PIN in your public HTML file:
+
+Use a secret URL / query parameter or separate link only for yourself (for example, opening your site with ?admin=1 or keeping a private bookmark), rather than relying on a visible PIN stored in plain text inside the code.
+
+Even better: Keep your own working copy of the catalog locally on your computer, update items there, and re-upload index.html to GitHub/Netlify—that way no admin login or PIN ever exists on the public website.
+
+2. Optional Deterrent: Disable Right-Click in index.html
+If you still want to block casual right-clicking on your page, add this snippet right before the closing </body> tag in your index.html file:
+
+HTML
+<script>
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+</script>
+How to Apply and Verify the Change
+Open index.html in a text editor (like Notepad or VS Code), remove any hardcoded PIN text if you no longer want it exposed in the source, and paste the <script> block above just before </body>.
+
+Save index.html, upload it to your GitHub repository (replacing the old index.html), and wait ~15–30 seconds for Netlify to finish redeploying.
+
+Open your live site in a browser and right-click on the page—the right-click context menu should no longer open, while normal tapping and scrolling continue to work.
+
+I really do need the pin to be hidden
+
+To truly hide your PIN so nobody can ever see it in View Page Source, Inspect, or by right-clicking, the PIN must not exist anywhere inside index.html. Instead, you validate the PIN on the server using a Netlify Function (free on Netlify) where your PIN is stored securely as a secret Environment Variable.
+
+When you enter your PIN on the website, the page sends it to your private Netlify Function, which checks it against your secret environment variable and replies "ok" or "invalid". Visitors who inspect the page code will only see the check request—never your actual PIN.
+
+Step 1: Add Your Secret PIN in Netlify
+Log in to Netlify and open your yard sale site dashboard.
+
+Go to Site configuration (or Project configuration) > Environment variables.
+
+Click Add a variable > Add a single variable:
+
+Key: ADMIN_PIN
+
+Value: Your chosen PIN (for example, 4829)
+
+Scopes: Leave all selected, then click Create variable.
+
+Step 2: Create the Server Check File (netlify/functions/verify-pin.js)
+In your GitHub repository (or local project folder), create a folder named netlify, inside it a folder named functions, and inside that a file named verify-pin.js (netlify/functions/verify-pin.js) with this exact code:
+
+JavaScript
+exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
+
+  try {
+    const { pin } = JSON.parse(event.body || "{}");
+    const secretPin = process.env.ADMIN_PIN;
+
+    if (!secretPin) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ ok: false, error: "Server PIN not configured" })
+      };
+    }
+
+    const isValid = String(pin).trim() === String(secretPin).trim();
+    return {
+      statusCode: isValid ? 200 : 401,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ok: isValid })
+    };
+  } catch (err) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ ok: false })
+    };
+  }
+};
+(Tip on GitHub: Click Add file > Create new file, and in the filename box type netlify/functions/verify-pin.js—GitHub automatically creates both folders for you when you type /.)
+
+Step 3: Update Your PIN Check in index.html
+In your index.html file:
+
+Delete any hardcoded PIN variable (such as const ADMIN_PIN = "1234";).
+
+Replace your login check with a call to /.netlify/functions/verify-pin:
+
+JavaScript
+async function verifyAdminPin(enteredPin) {
+  try {
+    const res = await fetch("/.netlify/functions/verify-pin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pin: enteredPin })
+    });
+    const data = await res.json();
+    return data.ok === true;
+  } catch (e) {
+    return false;
+  }
+}
+Call await verifyAdminPin(inputValue) when you submit the PIN prompt.
+
+Step 4: Trigger a Fresh Netlify Deploy
+After saving netlify/functions/verify-pin.js and updating index.html in GitHub, go to Netlify > Deploys.
+
+Click Trigger deploy > Clear cache and deploy site so Netlify picks up both your new function and your new ADMIN_PIN environment variable.
+
+Open your live site, right-click > View Page Source, and search for your PIN—it will not appear anywhere in the browser, while entering it in the prompt will unlock your Admin panel.
+
+If you'd like me to output the complete updated index.html already wired up to /.netlify/functions/verify-pin (with right-click disabled too), just let me know!
+
+Contain secret value should I click on that?
+
+Yes, check/click "Contains secret value."
+
+Turning that option on tells Netlify to mask your PIN in the dashboard (showing •••• instead of plain text) and keep it hidden from deploy logs and build outputs.
+
+Here is how to complete that screen:
+
+Check Contains secret value.
+
+Set Key to ADMIN_PIN.
+
+Set Value to your PIN number.
+
+Leave Scopes set to All scopes (or make sure Functions is checked).
+
+Click Create variable.
+
+(Note: Once saved with "Contains secret value" enabled, you won't be able to view the PIN again in Netlify—only overwrite it with a new value—so make sure you remember the PIN you typed before clicking Create.)
+
+Local development (Netlify CLI) type password too?
+
+Yes—when you run your site locally using Netlify CLI (netlify dev), it also reads ADMIN_PIN from your Netlify environment variables (or from a local .env file if you put one in your project folder), so you enter the exact same PIN on your local test site.
+
+If you do not use netlify dev and simply double-click index.html to open it directly in your browser, /.netlify/functions/verify-pin won't run locally unless you test on your live Netlify URL or run netlify dev.
+
+How to Test It Locally with Netlify CLI
+1
+Install and log in to Netlify CLI
+Open your terminal or command prompt, run npm install -g netlify-cli if you haven't installed it yet, and run netlify login to sign in with your Netlify account.
+Verification: The terminal confirms you are logged in to your Netlify account without errors.
+
+2
+Link your local folder to your Netlify site
+Inside your project folder (the one containing index.html and netlify/functions/verify-pin.js), run netlify link and select your yard sale site from the list.
+Verification: Netlify CLI reports that your folder is linked to your site ID.
+
+3
+Start the local dev server and enter your PIN
+Run netlify dev and open the local URL shown in the terminal (usually http://localhost:8888). Open the Admin prompt on the page and type the same ADMIN_PIN you saved in Netlify.
+Verification: The Admin panel unlocks locally because netlify dev injects your Netlify environment variables and runs your local verify-pin function.
+
+(Optional local shortcut: If you ever want to test offline without linking to Netlify, create a file named .env in your project folder with ADMIN_PIN=yourpin—just make sure .env is never uploaded to a public GitHub repository.)
+
+I changed to this: const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1';
+
+const SELLER_CONTACT_PHONE = "4703532247"; // Customize or seller phone
+
+const SELLER_CONTACT_EMAIL = "mlds1977@hotmail.com";
+
+const ADMIN_PIN = "015026"
+
+Because const ADMIN_PIN = "015026" is written directly inside index.html, anyone who opens your site can still see 015026 by pressing Ctrl+U (View Page Source) or F12 (Inspect)—even if you disable right-clicking. Also, because you posted 015026 here, you should pick a fresh PIN when you save it in Netlify.
+
+To keep the PIN completely hidden from your public index.html, remove const ADMIN_PIN = "015026" and check the PIN through the Netlify Function (/.netlify/functions/verify-pin) instead.
+
+1. Update Your Constants in index.html
+Replace your four lines at the top of your <script> with this (with ADMIN_PIN removed):
+
+JavaScript
+const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1';
+const SELLER_CONTACT_PHONE = "4703532247";
+const SELLER_CONTACT_EMAIL = "mlds1977@hotmail.com";
+
+async function checkAdminPin(enteredPin) {
+  try {
+    const res = await fetch("/.netlify/functions/verify-pin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pin: enteredPin })
+    });
+    const data = await res.json();
+    return data.ok === true;
+  } catch (err) {
+    return false;
+  }
+}
+2. Update the Button/Form That Checks the PIN
+Find the part of your index.html script that checks if (pin === ADMIN_PIN) (or enteredPin === ADMIN_PIN) and change it to use await checkAdminPin(...):
+
+JavaScript
+// Make sure the function containing this is marked `async`
+const isValid = await checkAdminPin(enteredPin);
+
+if (isValid) {
+  // unlock admin panel
+} else {
+  alert("Incorrect PIN");
+}
+3. Double-Check These Two Files Before Deploying
+In Netlify (Site configuration > Environment variables): Make sure ADMIN_PIN is saved with your new secret PIN (and Contains secret value checked).
+
+In GitHub (netlify/functions/verify-pin.js): Make sure that file is in your repository so /.netlify/functions/verify-pin responds when you submit the PIN.
+
+In Netlify (Deploys): Click Trigger deploy > Clear cache and deploy site so the updated index.html and function go live together.
+
+If you paste the 15–20 lines of your index.html around your PIN prompt/button handler, I can give you the exact drop-in replacement for that section.
+
+where do I place the option 2 (javascript)?
+
+That snippet replaces the old PIN check inside the <script> tag of your index.html, specifically inside the function or button click/form submit handler that used to compare against ADMIN_PIN.
+
+1. Where to Look in index.html
+Open index.html in a text editor and press Ctrl+F (or Cmd+F on Mac) to search for ADMIN_PIN or pin. You will find a block of JavaScript tied to your Admin login button, modal, or form—usually looking something like this:
+
+JavaScript
+// BEFORE (what you are replacing)
+adminLoginBtn.addEventListener("click", function () {
+  const enteredPin = pinInput.value;
+  if (enteredPin === ADMIN_PIN) {
+    openAdminPanel();
+  } else {
+    alert("Incorrect PIN");
+  }
+});
+2. How to Replace It
+Replace that if (enteredPin === ADMIN_PIN) check with the await checkAdminPin(...) block, and add async right before function (or ()) so await is allowed inside it:
+
+JavaScript
+// AFTER (placed inside that same button/form handler)
+adminLoginBtn.addEventListener("click", async function () {
+  const enteredPin = pinInput.value;
+  const isValid = await checkAdminPin(enteredPin);
+
+  if (isValid) {
+    openAdminPanel();
+  } else {
+    alert("Incorrect PIN");
+  }
+});
+(Keep whatever code you already have inside the if (isValid) block—such as opening your admin drawer/panel or closing the PIN modal—and remove any old const ADMIN_PIN = ... line anywhere else in the script.)
+
+3. Quick Check After Pasting
+Make sure checkAdminPin(enteredPin) is defined above (or anywhere inside the same <script> block as) the handler that calls it.
+
+Save index.html, push/upload it to GitHub, and trigger a fresh deploy in Netlify.
+
+Test entering both a wrong PIN and your real ADMIN_PIN in the browser to confirm the panel unlocks only on a valid PIN.
+
+this the index code:<!DOCTYPE html>
+
+<html lang="en" class="h-full bg-slate-50">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Virtual Yard Sale</title>
+
+<!-- Tailwind CSS CDN -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- FontAwesome for Icons -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- QR Code Generator Library -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- Google Fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+<script>
+
+tailwind.config = {
+
+theme: {
+
+extend: {
+
+fontFamily: {
+
+sans: ['Inter', 'sans-serif'],
+
+},
+
+colors: {
+
+brand: {
+
+50: '#f0fdf4',
+
+100: '#dcfce7',
+
+500: '#22c55e',
+
+600: '#16a34a',
+
+700: '#15803d',
+
+}
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+
+
+<style>
+
+/* Custom Styles for Printable Flyer */
+
+@media print {
+
+body * {
+
+visibility: hidden;
+
+}
+
+#printable-flyer-modal, #printable-flyer-modal * {
+
+visibility: visible;
+
+}
+
+#printable-flyer-modal {
+
+position: absolute;
+
+left: 0;
+
+top: 0;
+
+width: 100%;
+
+height: 100%;
+
+background: white !important;
+
+padding: 0 !important;
+
+margin: 0 !important;
+
+}
+
+.no-print {
+
+display: none !important;
+
+}
+
+}
+
+
+
+.sold-ribbon {
+
+background-color: rgba(220, 38, 38, 0.9);
+
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+
+}
+
+</style>
+
+</head>
+
+<body class="font-sans antialiased text-slate-800 flex flex-col min-h-full">
+
+
+
+<!-- Header / Navbar -->
+
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="flex justify-between items-center h-16">
+
+<!-- Branding -->
+
+<div class="flex items-center space-x-3">
+
+<div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-md">
+
+<i class="fa-solid fa-store text-xl"></i>
+
+</div>
+
+<div>
+
+<h1 class="text-xl font-bold text-slate-900 leading-tight">Virtual Yard Sale</h1>
+
+<p class="text-xs text-slate-500 font-medium">Great items, fantastic prices!</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Header Actions -->
+
+<div class="flex items-center space-x-2 sm:space-x-3">
+
+<!-- QR / Flyer Generator Button -->
+
+<button id="open-flyer-btn" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-medium rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+
+<i class="fa-solid fa-qrcode text-brand-600"></i>
+
+<span class="hidden md:inline">Print Poster / QR</span>
+
+</button>
+
+
+
+<!-- Admin Mode Toggle Button -->
+
+<button id="toggle-admin-btn" class="inline-flex items-center space-x-1.5 px-3 py-2 text-sm font-semibold rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-300">
+
+<i class="fa-solid fa-lock text-slate-500" id="admin-icon"></i>
+
+<span id="admin-btn-text" class="hidden sm:inline">Admin Login</span>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Admin Banner (Shows when logged in) -->
+
+<div id="admin-banner" class="hidden bg-amber-500 text-slate-950 px-4 py-2 text-xs sm:text-sm font-medium text-center flex justify-between items-center max-w-7xl mx-auto rounded-b-md shadow-inner">
+
+<div class="flex items-center space-x-2">
+
+<i class="fa-solid fa-user-gear"></i>
+
+<span><strong>Admin Mode Active:</strong> You can add items, toggle status, edit or delete.</span>
+
+</div>
+
+<div class="flex items-center space-x-2">
+
+<button id="add-item-btn" class="bg-slate-900 text-white px-3 py-1 rounded text-xs hover:bg-slate-800 transition">
+
+<i class="fa-solid fa-plus mr-1"></i> Add Item
+
+</button>
+
+<button id="data-mgmt-btn" class="bg-amber-100 text-amber-900 px-3 py-1 rounded text-xs hover:bg-amber-200 transition border border-amber-300">
+
+<i class="fa-solid fa-database mr-1"></i> Data Backup/Restore
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- Main Content Area -->
+
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+
+
+<!-- Controls Section: Search & Category Filters -->
+
+<div class="mb-6 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
+
+
+<!-- Search Input -->
+
+<div class="relative flex-1">
+
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+</div>
+
+<input type="text" id="search-input" placeholder="Search items by title or description..."
+
+class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm">
+
+</div>
+
+
+
+<!-- Status & Category Filter Buttons -->
+
+<div class="flex flex-wrap items-center gap-2">
+
+<!-- Status Filter -->
+
+<div class="inline-flex p-1 bg-slate-200 rounded-xl text-xs font-semibold">
+
+<button class="status-filter-btn px-3 py-1.5 rounded-lg bg-white shadow-sm text-slate-900" data-status="all">All</button>
+
+<button class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="available">Available</button>
+
+<button class="status-filter-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900" data-status="sold">Sold</button>
+
+</div>
+
+
+
+<!-- Category Dropdown -->
+
+<select id="category-filter" class="py-2 px-3 rounded-xl border border-slate-300 bg-white shadow-sm text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+
+<option value="all">All Categories</option>
+
+<option value="Furniture">Furniture</option>
+
+<option value="Electronics">Electronics</option>
+
+<option value="Tools & Outdoors">Tools & Outdoors</option>
+
+<option value="Home & Kitchen">Home & Kitchen</option>
+
+<option value="Sports & Toys">Sports & Toys</option>
+
+<option value="Clothing">Clothing</option>
+
+<option value="Other">Other</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<!-- Catalog Items Grid -->
+
+<div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+<!-- Dynamic Item Cards Render Here -->
+
+</div>
+
+
+
+<!-- Empty State View -->
+
+<div id="empty-state" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-slate-200 shadow-sm mt-4">
+
+<div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+
+<i class="fa-solid fa-box-open text-2xl"></i>
+
+</div>
+
+<h3 class="text-lg font-bold text-slate-800">No items found</h3>
+
+<p class="text-sm text-slate-500 mt-1 max-w-sm mx-auto">Try adjusting your search terms or filters to find what you're looking for.</p>
+
+</div>
+
+</main>
+
+
+
+<!-- Footer -->
+
+<footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+
+<div class="max-w-7xl mx-auto px-4">
+
+<p>© <span id="current-year"></span> Virtual Yard Sale. Hosted online for quick browsing!</p>
+
+<p class="mt-1">Items are available for local pick-up. Contact seller for details.</p>
+
+</div>
+
+</footer>
+
+
+
+<!-- MODAL 1: Contact / Buyer Interest Modal -->
+
+<div id="contact-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+
+<div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative overflow-hidden animate-in fade-in zoom-in duration-200">
+
+<button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+
+<div class="flex items-center space-x-3 mb-4">
+
+<div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold">
+
+<i class="fa-solid fa-comments"></i>
+
+</div>
+
+<div>
+
+<h3 class="font-bold text-slate-900 text-lg">Contact Seller</h3>
+
+<p class="text-xs text-slate-500">Express interest or schedule a pick-up</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Item Details Preview in Modal -->
+
+<div id="contact-item-preview" class="bg-slate-50 p-3 rounded-xl mb-4 flex items-center space-x-3 border border-slate-200">
+
+<!-- Dynamic Content injected here -->
+
+</div>
+
+
+
+<p class="text-xs text-slate-600 mb-4 font-medium">Choose your preferred method to reach out directly:</p>
+
+
+
+<div class="space-y-3">
+
+<a id="contact-sms-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-sm shadow transition">
+
+<i class="fa-solid fa-comment-sms"></i>
+
+<span>Send SMS Text Message</span>
+
+</a>
+
+<a id="contact-whatsapp-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold text-sm shadow transition">
+
+<i class="fa-brands fa-whatsapp text-lg"></i>
+
+<span>Chat on WhatsApp</span>
+
+</a>
+
+<a id="contact-email-btn" href="#" target="_blank" class="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm shadow transition">
+
+<i class="fa-regular fa-envelope"></i>
+
+<span>Send Email</span>
+
+</a>
+
+</div>
+
+
+
+<div class="mt-4 pt-3 border-t border-slate-100 text-center">
+
+<button class="close-modal-btn text-xs text-slate-400 hover:text-slate-600 font-medium">Cancel</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL 2: Admin Login Pin Modal -->
+
+<div id="admin-login-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+
+<div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 relative">
+
+<button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+<div class="text-center mb-5">
+
+<div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+
+<i class="fa-solid fa-lock"></i>
+
+</div>
+
+<h3 class="font-bold text-slate-900 text-lg">Admin Authentication</h3>
+
+<p class="text-xs text-slate-500 mt-1">Enter PIN to enable seller control features.<br><span class="text-slate-400 italic">(Default PIN is 1234)</span></p>
+
+</div>
+
+<form id="admin-login-form" class="space-y-4">
+
+<div>
+
+<input type="password" id="admin-pin-input" placeholder="Enter PIN" required maxlength="8"
+
+class="w-full text-center tracking-widest text-lg py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
+
+</div>
+
+<button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow transition text-sm">
+
+Unlock Admin Panel
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL 3: Add / Edit Item Modal -->
+
+<div id="item-form-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+
+<div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative my-8">
+
+<button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+<h3 id="form-modal-title" class="font-bold text-slate-900 text-xl mb-4">Add New Item</h3>
+
+
+
+<form id="item-form" class="space-y-4">
+
+<input type="hidden" id="item-id">
+
+
+<div>
+
+<label class="block text-xs font-semibold text-slate-700 mb-1">Item Title *</label>
+
+<input type="text" id="item-title" required placeholder="e.g. Vintage Wooden Coffee Table" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+
+</div>
+
+
+
+<div class="grid grid-cols-2 gap-3">
+
+<div>
+
+<label class="block text-xs font-semibold text-slate-700 mb-1">Price ($) *</label>
+
+<input type="number" id="item-price" required step="0.01" min="0" placeholder="25.00" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+
+</div>
+
+<div>
+
+<label class="block text-xs font-semibold text-slate-700 mb-1">Category</label>
+
+<select id="item-category" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none bg-white">
+
+<option value="Furniture">Furniture</option>
+
+<option value="Electronics">Electronics</option>
+
+<option value="Tools & Outdoors">Tools & Outdoors</option>
+
+<option value="Home & Kitchen">Home & Kitchen</option>
+
+<option value="Sports & Toys">Sports & Toys</option>
+
+<option value="Clothing">Clothing</option>
+
+<option value="Other">Other</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<div>
+
+<label class="block text-xs font-semibold text-slate-700 mb-1">Image Source</label>
+
+<div class="space-y-2">
+
+<input type="url" id="item-image-url" placeholder="Paste Image URL (https://...)" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+
+<div class="text-center text-xs text-slate-400 font-medium">- OR Upload File -</div>
+
+<input type="file" id="item-image-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200">
+
+</div>
+
+<p class="text-[10px] text-slate-400 mt-1">Leave empty to use a realistic placeholder image automatically.</p>
+
+</div>
+
+
+
+<div>
+
+<label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
+
+<textarea id="item-description" rows="3" placeholder="Condition, dimensions, or specifics..." class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+
+</div>
+
+
+
+<div class="flex items-center space-x-2 pt-1">
+
+<input type="checkbox" id="item-sold-check" class="w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500">
+
+<label for="item-sold-check" class="text-sm font-semibold text-slate-800">Mark item as SOLD</label>
+
+</div>
+
+
+
+<div class="pt-3 flex justify-end space-x-2">
+
+<button type="button" class="close-modal-btn px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50">Cancel</button>
+
+<button type="submit" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-sm shadow">Save Item</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL 4: Printable Poster & QR Code Utility -->
+
+<div id="printable-flyer-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+
+<div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-8 relative my-6 text-slate-900">
+
+
+<!-- Controls (Non-printable) -->
+
+<div class="no-print flex justify-between items-center pb-4 mb-6 border-b border-slate-200">
+
+<h3 class="font-bold text-slate-800 text-base">Printable Store Poster & QR Code</h3>
+
+<div class="flex items-center space-x-2">
+
+<button id="trigger-print-btn" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-bold flex items-center space-x-2 shadow">
+
+<i class="fa-solid fa-print"></i>
+
+<span>Print Flyer</span>
+
+</button>
+
+<button class="close-modal-btn text-slate-400 hover:text-slate-600 text-xl px-2">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- Custom URL Input Area (No-Print) -->
+
+<div class="no-print bg-slate-50 p-3 rounded-xl border border-slate-200 mb-6 text-xs space-y-2">
+
+<label class="font-semibold text-slate-700">QR Code Target Web Address:</label>
+
+<div class="flex space-x-2">
+
+<input type="text" id="flyer-url-input" class="flex-1 px-3 py-1.5 border border-slate-300 rounded-lg bg-white" placeholder="https://...">
+
+<button id="update-qr-btn" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-900">Update QR</button>
+
+</div>
+
+<p class="text-[11px] text-slate-500">Default points to current URL. Update if hosting on GitHub Pages/Netlify address.</p>
+
+</div>
+
+
+
+<!-- FLYER CONTENT (Optimized for 8.5x11 Print layout) -->
+
+<div class="text-center py-4 px-2 border-4 border-slate-900 rounded-3xl space-y-6">
+
+<div class="space-y-1">
+
+<span class="inline-block bg-slate-900 text-white font-black text-xs uppercase px-3 py-1 rounded-full tracking-wider">Neighborhood Event</span>
+
+<h1 class="text-4xl font-extrabold text-slate-900 tracking-tight uppercase">VIRTUAL YARD SALE</h1>
+
+<p class="text-slate-600 font-medium text-lg">Scan to Browse Items, Prices & Pick-Up Info!</p>
+
+</div>
+
+
+
+<!-- QR CODE CENTERPIECE -->
+
+<div class="flex flex-col items-center justify-center my-4">
+
+<div class="bg-white p-4 rounded-2xl border-2 border-slate-200 shadow-md inline-block">
+
+<div id="qrcode-container" class="flex justify-center"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- URL Callout -->
+
+<div class="bg-slate-100 py-2 px-4 rounded-xl inline-block max-w-md">
+
+<p class="text-xs text-slate-500 font-semibold uppercase">Or visit website directly at:</p>
+
+<p id="flyer-url-display" class="font-mono text-sm font-bold text-slate-800 break-all"></p>
+
+</div>
+
+
+
+<!-- Bullet Instructions -->
+
+<div class="grid grid-cols-3 gap-2 text-center pt-2 max-w-md mx-auto text-xs text-slate-700">
+
+<div class="p-2 bg-slate-50 rounded-lg">
+
+<i class="fa-solid fa-camera text-brand-600 text-base mb-1 block"></i>
+
+<span><strong>1. Scan</strong> QR with phone camera</span>
+
+</div>
+
+<div class="p-2 bg-slate-50 rounded-lg">
+
+<i class="fa-solid fa-images text-brand-600 text-base mb-1 block"></i>
+
+<span><strong>2. View</strong> full item catalog</span>
+
+</div>
+
+<div class="p-2 bg-slate-50 rounded-lg">
+
+<i class="fa-solid fa-comments text-brand-600 text-base mb-1 block"></i>
+
+<span><strong>3. Contact</strong> seller directly</span>
+
+</div>
+
+</div>
+
+
+
+<p class="text-[11px] text-slate-400 font-medium pt-2">Updated in real-time as items are sold!</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL 5: Data Backup / Restore (JSON) -->
+
+<div id="data-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+
+<div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative">
+
+<button class="close-modal-btn absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+<h3 class="font-bold text-slate-900 text-lg mb-2">Manage Store Data</h3>
+
+<p class="text-xs text-slate-500 mb-4">Transfer your catalog across devices or save backups.</p>
+
+
+
+<div class="space-y-4">
+
+<div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+
+<h4 class="font-semibold text-slate-800 text-xs">Export Data</h4>
+
+<p class="text-[11px] text-slate-500">Download your current catalog as a JSON file.</p>
+
+<button id="export-json-btn" class="w-full py-2 bg-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-900">
+
+<i class="fa-solid fa-download mr-1"></i> Download JSON Backup
+
+</button>
+
+</div>
+
+
+
+<div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+
+<h4 class="font-semibold text-slate-800 text-xs">Import Data</h4>
+
+<p class="text-[11px] text-slate-500">Upload a previously saved JSON file.</p>
+
+<input type="file" id="import-json-file" accept=".json" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:bg-slate-200 file:text-slate-700 font-medium">
+
+</div>
+
+
+
+<div class="pt-2">
+
+<button id="reset-sample-btn" class="w-full py-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 text-xs font-semibold rounded-lg transition">
+
+Reset to Original Sample Data
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- JavaScript Application Logic -->
+
+<script>
+
+// --- INITIAL SETUP & DATA STRUCTURE ---
+
+const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1';
+
+const SELLER_CONTACT_PHONE = "4703532247";
+
+const SELLER_CONTACT_EMAIL = "mlds1977@hotmail.com";
+
+
+
+async function checkAdminPin(enteredPin) {
+
+try {
+
+const res = await fetch("/.netlify/functions/verify-pin", {
+
+method: "POST",
+
+headers: { "Content-Type": "application/json" },
+
+body: JSON.stringify({ pin: enteredPin })
+
+});
+
+const data = await res.json();
+
+return data.ok === true;
+
+} catch (err) {
+
+return false;
+
+}
+
+}
+
+
+
+;
+
+
+
+let isAdmin = false;
+
+let qrCodeInstance = null;
+
+
+
+// Realistic Sample Data out of the box
+
+const SAMPLE_ITEMS = [
+
+{
+
+id: "1",
+
+title: "Mid-Century Modern Wooden Chair",
+
+price: 45.00,
+
+category: "Furniture",
+
+description: "Solid wood frame with comfy original cushion. Very good condition with minor vintage wear.",
+
+image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80",
+
+sold: false,
+
+createdAt: Date.now() - 1000000
+
+},
+
+{
+
+id: "2",
+
+title: "Mountain Bike (26 inch)",
+
+price: 120.00,
+
+category: "Sports & Toys",
+
+description: "21-speed gear shift, front suspension works great. Recently tuned up and ready to ride.",
+
+image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80",
+
+sold: false,
+
+createdAt: Date.now() - 2000000
+
+},
+
+{
+
+id: "3",
+
+title: "Cast Iron Skillet (10-inch)",
+
+price: 20.00,
+
+category: "Home & Kitchen",
+
+description: "Fully seasoned and ready to use. Great heavy cooking quality.",
+
+image: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80",
+
+sold: true, // Example sold item
+
+createdAt: Date.now() - 3000000
+
+},
+
+{
+
+id: "4",
+
+title: "DeWalt Cordless Drill Kit",
+
+price: 65.00,
+
+category: "Tools & Outdoors",
+
+description: "Includes drill, 20V rechargeable battery, charger, and sturdy hard carrying case.",
+
+image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80",
+
+sold: false,
+
+createdAt: Date.now() - 4000000
+
+},
+
+{
+
+id: "5",
+
+title: "Retro Bluetooth Speaker",
+
+price: 30.00,
+
+category: "Electronics",
+
+description: "Vintage style aesthetic with modern sound quality and long battery life.",
+
+image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80",
+
+sold: false,
+
+createdAt: Date.now() - 5000000
+
+},
+
+{
+
+id: "6",
+
+title: "Acoustic Guitar with Gig Bag",
+
+price: 85.00,
+
+category: "Other",
+
+description: "Full size beginner/intermediate guitar. Clean tone, includes soft padded carrying case.",
+
+image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=600&q=80",
+
+sold: true,
+
+createdAt: Date.now() - 6000000
+
+}
+
+];
+
+
+
+// --- STATE MANAGEMENT ---
+
+function getStoredItems() {
+
+const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+if (!data) {
+
+localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(SAMPLE_ITEMS));
+
+return SAMPLE_ITEMS;
+
+}
+
+try {
+
+return JSON.parse(data);
+
+} catch(e) {
+
+return SAMPLE_ITEMS;
+
+}
+
+}
+
+
+
+function saveItems(items) {
+
+localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
+
+renderCatalog();
+
+}
+
+
+
+// --- DOM ELEMENTS ---
+
+const catalogGrid = document.getElementById('catalog-grid');
+
+const emptyState = document.getElementById('empty-state');
+
+const searchInput = document.getElementById('search-input');
+
+const categoryFilter = document.getElementById('category-filter');
+
+const statusFilterBtns = document.querySelectorAll('.status-filter-btn');
+
+
+const adminBanner = document.getElementById('admin-banner');
+
+const adminBtnText = document.getElementById('admin-btn-text');
+
+const adminIcon = document.getElementById('admin-icon');
+
+
+
+// --- RENDER FUNCTION ---
+
+let currentStatusFilter = 'all';
+
+
+
+function renderCatalog() {
+
+const items = getStoredItems();
+
+const searchTerm = searchInput.value.toLowerCase().trim();
+
+const selectedCategory = categoryFilter.value;
+
+
+
+// Filter logic
+
+const filtered = items.filter(item => {
+
+// Search term
+
+const matchesSearch = item.title.toLowerCase().includes(searchTerm) ||
+
+(item.description && item.description.toLowerCase().includes(searchTerm));
+
+
+// Status
+
+const matchesStatus = currentStatusFilter === 'all' ||
+
+(currentStatusFilter === 'available' && !item.sold) ||
+
+(currentStatusFilter === 'sold' && item.sold);
+
+
+
+// Category
+
+const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+
+
+
+return matchesSearch && matchesStatus && matchesCategory;
+
+});
+
+
+
+// Toggle Empty State
+
+if (filtered.length === 0) {
+
+catalogGrid.innerHTML = '';
+
+emptyState.classList.remove('hidden');
+
+return;
+
+} else {
+
+emptyState.classList.add('hidden');
+
+}
+
+
+
+// Render Cards
+
+catalogGrid.innerHTML = filtered.map(item => {
+
+const formattedPrice = parseFloat(item.price).toFixed(2);
+
+
+return `
+
+<div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col relative group">
+
+
+<!-- Image Area with SOLD Banner Overlay -->
+
+<div class="relative w-full pt-[75%] bg-slate-100 overflow-hidden">
+
+<img src="${item.image || 'https://placehold.co/600x450/e2e8f0/475569?text=Yard+Sale+Item'}"
+
+alt="${escapeHtml(item.title)}"
+
+onerror="this.src='https://placehold.co/600x450/e2e8f0/475569?text=Image+Unavailable'"
+
+class="absolute inset-0 w-full h-full object-cover group-hover:
+
+Your pasted code is cut off right in the middle of the <script> tag (around group-hover:...), and it still has a stray semicolon ; on line 399 right below checkAdminPin.
+
+Because your code was cut off partway through, I'll regenerate the complete, uncut index.html file with:
+
+checkAdminPin(enteredPin) wired to /.netlify/functions/verify-pin (and no hardcoded ADMIN_PIN in the file).
+
+The async login submit handler ready to call checkAdminPin.
+
+All modals, catalog rendering, QR code flyer, and JSON backup/restore intact.
+
+index.html [generated with web_code_canvas tool]
+
+What to Do Next
+Download the complete index.html from the editor pane on the right.
+
+Make sure ADMIN_PIN is set in Netlify > Site configuration > Environment variables (with Contains secret value checked) and netlify/functions/verify-pin.js is in your GitHub repository.
+
+Upload the new index.html to GitHub and run Trigger deploy > Clear cache and deploy site in Netlify.
+
+now give the html code including the the javascript that you gave to me and I will download
+
+Your index.html file is ready
+
+HTML icon
+index
+ HTML 
+This download includes the complete HTML layout along with the full JavaScript application logic wired to /.netlify/functions/verify-pin (with no hardcoded PIN in the HTML file).
+
+Quick Reminder Before You Upload
+Make sure netlify/functions/verify-pin.js is in your GitHub repository.
+
+Make sure ADMIN_PIN is saved in Netlify > Site configuration > Environment variables with Contains secret value checked.
+
+Upload this index.html to GitHub and trigger a fresh deploy in Netlify so both the page and function are live together.
+
+create a QR code for https://furnituresales123.netlify.app/
+
+, AI generated
+Important note for store flyers: Because AI-generated images are artistic renderings rather than mathematically encoded URLs, do not rely on an AI-generated image for a real-world store flyer—a phone camera may fail to scan it or open the wrong address.
+
+For a guaranteed, scannable QR code pointing to [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/):
+
+Use your site's built-in poster tool: Open [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/), click Print Poster / QR, make sure the target URL field shows [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/), and click Print Flyer (the page already includes the qrcode.min.js generator).
+
+Or use a standard QR generator: Paste [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) into a QR generator tool and test scanning it with your phone camera before printing copies for local stores.
+
+make it 2x2 inches
+
+Square 2x2 QR code graphic for https://furnituresales123.netlify.app/   
+watermarked_img_5930571317644312973.jpg
+
+, AI generated
+To print it at an exact 2 x 2 inches physical size on paper or sticker labels:
+
+At 300 DPI (recommended for crisp printing): Resize the image to 600 x 600 pixels in your image editor, Word/Google Docs, or label printer software before printing.
+
+At 150 DPI (draft/ink-saver): Resize to 300 x 300 pixels and lock the dimensions to 2.0 in wide by 2.0 in tall.
+
+Test before placing in stores: Always scan your printed 2x2 inch copy with your phone camera to confirm it opens [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) reliably.   
+watermarked_img_5930571317644312973.jpg
+
+this qr is not working
+
+https://lh3.googleusercontent.com/gg/AJWXcNdsP7Nuj0OcAlYyNHn7_rOYdoF0huchTW2t9t898Wvk6z8dS6o8LxpkOQ6Co_0rwEuqIx8BEbNZipZwz2Nd-ww7KiYkPJIpsGPQpX_epRM8F2aU86FFnatlek8nPMdAB7kqnjBP-YNsxOIXNQ2pndy1AMG9qpRP2ZD_l4ozfEDttQCLJO0NcB84hiHtybaVjufoA5HPjV9yk0qxZHKFqyphh_oC9s-k_jM8cXyUAIK5xbLn_h6dWAAmmsZQLihJaBJWIjHn65xdGB0RJh0dRMmGxgfcrIfz8kngS0W3gzibs094V_SIM2qGdF9kG1z7S7jkmFR2MfHvFOc32e-DtfTr=s1600
+That confirms why the earlier images didn't scan: AI image generators draw pictures that look like QR codes rather than computing real QR error-correction bit patterns, and I don't have a standalone QR-encoding library available in this environment to generate a mathematically guaranteed QR image file.
+
+Because you are printing flyers for local stores, the safest way to get a working 2 x 2 inch QR code for [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) is directly from your live website (which already has qrcode.min.js built in):   
+index.html
++ 2
+
+How to Print a Real, Scannable 2 x 2 Inch QR Code from Your Site
+Open [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) in your browser.   
+watermarked_img_5930571317644312973.jpg
+
+Click Print Poster / QR in the top-right header.   
+index.html
+
+Make sure the QR target address is set to [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) and click Update QR.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+Right-click the generated QR code inside the flyer preview (or use your print dialog / screenshot crop) so you have the crisp square QR graphic, place it in your flyer/label layout, and set its width and height to 2.0 in x 2.0 in.
+
+Test it with your phone camera before printing store copies to verify it opens [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/).   
+watermarked_img_5930571317644312973.jpg
+
+(Tip: Keep a white border—called a "quiet zone"—around the 2 x 2 inch QR code when placing it on a colored flyer or sticker so phone cameras detect the edges easily.)
+
+when I use this qr on my cell phone, it takes me the old website not the one that I updated
+
+When scanning a QR code on your phone opens an older version of your site ([https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/)), the QR code itself isn't pointing to a different address—your phone's browser or Netlify's edge cache is serving a cached copy of the old page, or the new deploy hasn't finished yet.   
+watermarked_img_5930571317644312973.jpg
+
+Follow these steps to force your phone and Netlify to show the updated site:
+
+1
+Confirm the latest deploy succeeded in Netlify
+Log in to Netlify, open your site (furnituresales123.netlify.app), and go to Deploys. Check that the top deploy shows Published with a recent timestamp and no build/function errors. If it is still building or failed, click Trigger deploy > Clear cache and deploy site.
+
+2
+Open the link in a Private / Incognito tab on your phone
+Avoids cached browser tabs and old page snapshots
+Open Safari (Private) or Chrome (Incognito) on your phone and type [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) directly—or scan the QR code and switch to a Private/Incognito tab. If the updated page appears there, your normal browser tab was holding onto an old cached page.
+
+3
+Clear site data or refresh the page on your phone
+In your phone's browser, reload the page or clear website data/cache for netlify.app so your regular browser pulls the fresh index.html file instead of the saved copy.
+
+4
+Check whether your item changes were saved in the live file or only in local storage
+Changes you make on one phone/browser stay in that browser's storage
+Remember that adding items or toggling SOLD in the Admin panel saves to localStorage on the specific device/browser where you clicked it. If you added or edited items on your computer and expect everyone scanning the QR code on their phones to see those exact items/SOLD states, make sure your updated catalog data is included in the deployed index.html (or imported/saved on that device).
+
+If you open [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) in an Incognito/Private tab on your phone and still see the old version, let me know what looks different (for example, old sample items, missing "Admin Login" button, or a PIN prompt) and we can narrow down whether it's a GitHub branch mismatch, a Netlify deploy issue, or browser caching.   
+watermarked_img_5930571317644312973.jpg
+
+browser will show the update, cellphone give old site
+
+If your computer browser already shows the updated site while your cell phone still opens the old one, your phone's browser cache (or a saved tab/bookmark) is holding onto the old version—the live website itself is already updated.
+
+Try these quick checks on your phone:
+
+1
+Open the site in a Private or Incognito tab on your phone
+Open Safari (Private) or Chrome (Incognito) on your phone and go directly to [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/). Because Private/Incognito tabs ignore old cached pages, this tells you right away whether the live site is new on mobile.
+
+2
+Close old tabs and type or scan fresh
+Check if you tapped an old open tab or bookmark
+If you already had furnituresales123.netlify.app open in a background tab, your phone may be jumping back to that old tab instead of loading the new page. Close old tabs, then scan the QR code or enter [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) fresh.
+
+3
+Clear cached site data in your phone browser
+iPhone (Safari): Go to Settings > Apps > Safari > Clear History and Website Data (or Settings > Safari > Advanced > Website Data and remove netlify.app).
+
+Android (Chrome): Tap the three dots in Chrome > History > Delete browsing data (or Clear browsing data), select Cached images and files, and clear it.
+
+4
+Verify whether you mean the page design or your item/SOLD changes
+Remember that local item edits stay on the device where you made them
+If the page layout, buttons, or PIN login look old on your phone, clearing cache/using Incognito will fix it. If the page is new on your phone but your added items or SOLD toggles from your computer don't appear on your phone, that's because localStorage is saved per browser/device—export/import JSON or save your items into the deployed code so every phone sees them.
+
+Let me know if a Private/Incognito tab on your phone still shows the old site—if it does, we can check if your phone is connecting through a proxy, VPN, or an older deploy URL.
+
+do I have to download the picture in github?
+
+No, you do not have to download any picture into GitHub for your website or QR code to work.
+
+Here is how your pictures and QR code are actually handled:
+
+Your QR code poster: Your live website ([https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/)) already generates the QR code in the browser using qrcode.min.js when you click Print Poster / QR—no image file needs to be saved in GitHub.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+Your yard sale item photos: You can add items directly in the website's Admin panel using a public image link (URL) or by uploading a photo file from your device in the Add/Edit Item form (which stores the item data in your browser's localStorage). You only need to upload extra files to GitHub if you explicitly want to store static image files directly inside your repository.   
+index.html
++ 2
+
+Only Upload a Picture to GitHub If...
+You want a permanent image file hosted directly on your site URL (for example, [https://furnituresales123.netlify.app/my-photo.jpg](https://furnituresales123.netlify.app/my-photo.jpg)) that every visitor's phone loads automatically without relying on a device's localStorage.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+Even then, it's optional—using the Add Item modal and Data Backup/Restore (JSON) on your site is usually much faster while you're listing and marking items SOLD.   
+index.html
++ 2
+
+Are you planning to add your item photos through the website's Add Item form, or do you want your photos baked into the site files so every visitor sees them automatically?   
+index.html
+
+yes, I log in as admin and I edited like photos and descriptions, but I only see the old website. tell me what to do straightforward
+
+Here is why that happens and what to do:
+
+Your edits in Admin Mode only save inside that specific browser on that specific device (localStorage). They do not save to [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) for other devices or other browsers.   
+index.html
++ 1
+
+Do This
+Make your edits on the device/browser you want to view (or open [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) in the same browser where you made the edits).   
+watermarked_img_5930571317644312973.jpg
+
+To move edits from one device/browser to another:
+
+On the device where you edited the items, log in as Admin, click Data Backup/Restore, and click Download JSON Backup.   
+index.html
+
+Open [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) on your other device/browser, log in as Admin, click Data Backup/Restore, and select that .json file under Import Data.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+To make your edited items show up automatically for everyone without importing JSON on each device, paste your exported JSON array into SAMPLE_ITEMS inside index.html (and clear localStorage if needed), then upload index.html to GitHub and redeploy on Netlify.   
+index.html
++ 1
+
+I edited on this page https://furnituresales123.netlify.app/
+
+Even when you edit directly on [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/), those edits save only to localStorage inside that exact browser on that exact device. That is why your phone—or a different browser—still shows the old items unless you transfer them or bake them into index.html.   
+watermarked_img_5930571317644312973.jpg
++ 2
+
+Do This
+If you edited on your computer and want your phone to show those same edits:
+
+On your computer ([https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/)), log in as Admin, click Data Backup/Restore, and click Download JSON Backup.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+Send that .json file to your phone, open [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) on your phone, log in as Admin, click Data Backup/Restore, and choose the file under Import Data.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+If you edited on your phone and the phone itself is still showing the old page:
+
+Close any old open tab for furnituresales123.netlify.app and open a Private / Incognito tab to [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) (or clear your phone browser's cached site data) so it stops showing a cached snapshot.   
+watermarked_img_5930571317644312973.jpg
++ 1
+
+If you want every visitor who scans the QR code to see your edited items automatically without importing JSON:
+
+Click Download JSON Backup after finishing your edits, open index.html, replace the SAMPLE_ITEMS array with your exported JSON items, save index.html, upload it to GitHub, and redeploy on Netlify.   
+index.html
++ 2
+
+I don't want nnobody to download .json, I like to make it simple
+
+To make it simple with no .json backup or import steps, put your edited items directly inside SAMPLE_ITEMS in index.html, upload index.html to GitHub, and deploy on Netlify. That way, everyone who visits or scans the QR code sees the exact same items and photos automatically.   
+index.html
++ 1
+
+Simple Way (No .json Files)
+1
+Open index.html and find SAMPLE_ITEMS
+Open index.html in a text editor and search (Ctrl+F or Cmd+F) for SAMPLE_ITEMS. Each item inside [ ... ] has id, title, price, category, description, image, and sold (false for available, true for sold).
+Verification: You see the list of sample items (Mid-Century Modern Wooden Chair, Mountain Bike, etc.) inside the <script> section.
+
+2
+Edit the items directly in SAMPLE_ITEMS
+Change the title, price, description, image URL, and sold status right inside SAMPLE_ITEMS, or delete items you don't want.
+Verification: Every item in SAMPLE_ITEMS has matching quotes and commas, with no missing brackets.
+
+3
+Use a fresh storage key name so old browser data doesn't block it
+Near the top of the <script>, change const LOCAL_STORAGE_KEY = 'virtual_yard_sale_items_v1'; to a new name like 'virtual_yard_sale_items_v2'. That forces browsers to load your updated SAMPLE_ITEMS instead of an older saved list.
+Verification: The LOCAL_STORAGE_KEY line has a new version name like v2.
+
+4
+Upload index.html to GitHub and redeploy in Netlify
+Save index.html, upload/commit it to your GitHub repository, and in Netlify go to Deploys > Trigger deploy > Clear cache and deploy site.
+Verification: The Netlify deploy finishes with Published, and opening [https://furnituresales123.netlify.app/](https://furnituresales123.netlify.app/) on your phone shows your updated items.
+
+(Note: Because index.html currently saves Admin-panel edits to browser storage rather than writing back to GitHub automatically, editing SAMPLE_ITEMS in index.html is the cleanest way to publish your items and photos to everyone without touching .json files.)   
+index.html
+
+give me all the code to download
+
+Your code files are ready
+
+ZIP icon
+virtual-yard-sale-project
+ ZIP 
+HTML icon
+index
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-slate-50">
 <head>
@@ -918,3 +2801,59 @@
     </script>
 </body>
 </html>
+JS icon
+netlify/functions/verify-pin
+exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
+
+  try {
+    const { pin } = JSON.parse(event.body || "{}");
+    const secretPin = process.env.ADMIN_PIN;
+
+    if (!secretPin) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ ok: false, error: "Server PIN not configured" })
+      };
+    }
+
+    const isValid = String(pin).trim() === String(secretPin).trim();
+    return {
+      statusCode: isValid ? 200 : 401,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ok: isValid })
+    };
+  } catch (err) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ ok: false })
+    };
+  }
+};
+What Is Included
+virtual-yard-sale-project.zip — Contains both files already in their proper folder structure (index.html at the root and netlify/functions/verify-pin.js inside netlify/functions/).
+
+index.html — Complete Virtual Yard Sale web app with no hardcoded PIN and PIN checks sent to /.netlify/functions/verify-pin.
+
+netlify/functions/verify-pin.js — Server-side Netlify Function that checks the entered PIN against your ADMIN_PIN environment variable.
+
+How to Put Them Live
+Extract virtual-yard-sale-project.zip (or download index.html and netlify/functions/verify-pin.js individually).
+
+Upload/commit index.html and netlify/functions/verify-pin.js to your GitHub repository.
+
+Confirm ADMIN_PIN is saved under Netlify > Site configuration > Environment variables (with Contains secret value checked), then click Trigger deploy > Clear cache and deploy site in Netlify > Deploys.
+
+
+Limit reached. Resets 8:23 PM
+Limit reached · Resets 8:23 PM
+See usage
+Upgrade
+
+
+
+Gemini is AI and can make mistakes.
+
+Analyzing
